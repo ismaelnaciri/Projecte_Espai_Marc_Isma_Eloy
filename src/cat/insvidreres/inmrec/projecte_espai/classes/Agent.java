@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public interface Agent {
-
     default void enviarMissatge(String codi_professional, String missatge, String categoria) {
 
             String codi = codi_professional;
