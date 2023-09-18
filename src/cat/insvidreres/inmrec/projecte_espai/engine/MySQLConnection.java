@@ -1,5 +1,6 @@
 package cat.insvidreres.inmrec.projecte_espai.engine;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,10 +10,13 @@ import java.util.Properties;
 
 public class MySQLConnection {
 
+    static String rutaProjecte = System.getProperty("user.dir");
+    // static String sep = File.separator;
+
     public static Connection getConnection() throws SQLException {
         Connection connection = null;
 
-        try (FileInputStream fis = new FileInputStream("C:\\IdeaProjects\\2nDAM\\Projecte_Espai_Marc_Isma_Eloy")) {
+        try (FileInputStream fis = new FileInputStream(rutaProjecte)) {
             //TODO
             Properties pros = new Properties();
             pros.load(fis);
