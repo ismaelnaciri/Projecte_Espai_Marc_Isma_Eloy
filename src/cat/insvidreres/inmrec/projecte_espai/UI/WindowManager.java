@@ -19,6 +19,14 @@ public class WindowManager extends JPanel {
          add(tabbedPane);
         
     }
+
+    public static void openWindow(){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginGUI().setVisible(true);
+            }
+        });
+    }
 }
 class DadesPanel extends JPanel {
     public DadesPanel(){

@@ -1,5 +1,6 @@
 package cat.insvidreres.inmrec.projecte_espai.init;
 
+import cat.insvidreres.inmrec.projecte_espai.UI.WindowManager;
 import cat.insvidreres.inmrec.projecte_espai.engine.MySQLConnection;
 
 import java.sql.Connection;
@@ -12,6 +13,7 @@ public class Start {
     private static Connection connection;
 
     public static void main(String[] args) throws SQLException {
+        WindowManager.openWindow();
 
         connection = MySQLConnection.getConnection();
 
