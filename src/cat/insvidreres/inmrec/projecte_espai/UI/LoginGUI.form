@@ -122,6 +122,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="ENVIA"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enviaButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="catComboBox">
       <Properties>

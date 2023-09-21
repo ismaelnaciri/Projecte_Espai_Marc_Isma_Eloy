@@ -29,7 +29,6 @@ public class WindowManager extends JPanel {
         });
     }
 }
-
 class DadesPanel extends JPanel {
     public DadesPanel(){
         setLayout(new BorderLayout());
