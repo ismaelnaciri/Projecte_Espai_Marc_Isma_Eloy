@@ -14,9 +14,11 @@ public class MySQLConnection {
     // static String sep = File.separator;
 
     public static Connection getConnection() throws SQLException {
+
+        String connectionPropertiesPath = rutaProjecte + "\\src\\cat\\insvidreres\\inmrec\\projecte_espai\\connection.properties";
         Connection connection = null;
 
-        try (FileInputStream fis = new FileInputStream(rutaProjecte)) {
+        try (FileInputStream fis = new FileInputStream(connectionPropertiesPath)) {
             //TODO
             Properties pros = new Properties();
             pros.load(fis);

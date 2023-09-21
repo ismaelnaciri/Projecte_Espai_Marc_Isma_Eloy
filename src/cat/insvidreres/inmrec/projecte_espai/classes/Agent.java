@@ -22,18 +22,18 @@ public interface Agent {
                 msg = eliminarConsonants(msg);
             }
 
-            try (Connection connection = MySQLConnection.getConnection()) {
-
-                String sql = "INSERT INTO missatge (emissor, contingut_missatge, categoria_emissor) VALUES (?, ?, ?)";
-                PreparedStatement statement = connection.prepareStatement(sql);
-
-                statement.setString(1, codi);
-                statement.setString(2, msg);
-                statement.setString(3, cat);
-
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.getMessage());
-            }
+//            try (Connection connection = MySQLConnection.getConnection()) {
+//
+//                String sql = "INSERT INTO missatge (emissor, contingut_missatge, categoria_emissor) VALUES (?, ?, ?)";
+//                PreparedStatement statement = connection.prepareStatement(sql);
+//
+//                statement.setString(1, codi);
+//                statement.setString(2, msg);
+//                statement.setString(3, cat);
+//
+//            } catch (SQLException e) {
+//                System.out.println("Error: " + e.getMessage());
+//            }
     }
     private String eliminarVocals(String mensaje) {
         return mensaje.replaceAll("[AEIOUaeiou]", "");

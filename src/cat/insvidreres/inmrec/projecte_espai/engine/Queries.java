@@ -33,7 +33,14 @@ public class Queries implements Agent {
             e.printStackTrace();
         } finally {
             try {
-                if ()
+                if (result != null) {
+                    result.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
 
