@@ -11,11 +11,11 @@ import java.util.Properties;
 public class MySQLConnection {
 
     static String rutaProjecte = System.getProperty("user.dir");
-    // static String sep = File.separator;
+    static String sep = File.separator;
 
     public static Connection getConnection() throws SQLException {
 
-        String connectionPropertiesPath = rutaProjecte + "\\src\\cat\\insvidreres\\inmrec\\projecte_espai\\connection.properties";
+        String connectionPropertiesPath = rutaProjecte + sep + "src" + sep + "cat" + sep + "insvidreres" + sep + "inmrec" + sep + "projecte_espai" + sep + "connection.properties";
         Connection connection = null;
 
         try (FileInputStream fis = new FileInputStream(connectionPropertiesPath)) {
