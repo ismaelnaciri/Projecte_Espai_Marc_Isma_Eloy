@@ -17,6 +17,8 @@ public class Start {
 
         try {
             System.out.printf("Conected to database %s" + " successfully.%n", connection.getCatalog());
+
+
         } catch (SQLException e) {
             System.out.println("Error:" +
                     "ç " + e.getMessage());
