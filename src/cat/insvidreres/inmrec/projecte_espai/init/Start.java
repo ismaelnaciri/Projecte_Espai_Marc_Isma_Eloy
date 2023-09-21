@@ -23,7 +23,6 @@ public class Start {
             System.out.println("Error:" +
                     "ç " + e.getMessage());
         } finally {
-            connection.close();
 
             if (connection.isClosed())
                 System.out.println("Connection closed");
