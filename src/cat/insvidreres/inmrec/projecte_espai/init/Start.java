@@ -1,11 +1,10 @@
 package cat.insvidreres.inmrec.projecte_espai.init;
 
+import cat.insvidreres.inmrec.projecte_espai.UI.WindowManager;
 import cat.insvidreres.inmrec.projecte_espai.engine.MySQLConnection;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 public class Start {
 
@@ -27,6 +26,8 @@ public class Start {
             if (connection.isClosed())
                 System.out.println("Connection closed");
         }
+
+        WindowManager.openLoginWindow();
     }
 
     public static Connection getConnection() { return connection; }
