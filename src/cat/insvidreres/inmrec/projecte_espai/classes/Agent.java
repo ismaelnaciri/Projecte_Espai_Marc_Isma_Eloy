@@ -8,30 +8,40 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public interface Agent {
-    default void enviarMissatge(String codi_professional, String missatge, String categoria) {
+    default void enviarMissatgeEspia(String codi_professional, String missatge) {
+        String codi = codi_professional;
+        String msg = missatge;
 
-            String codi = codi_professional;
-            String msg = missatge;
-            String cat = categoria;
+        msg = eliminarVocals(msg);
 
-            if ("espia".equals(cat)) {
-                msg = eliminarVocals(msg);
-
-            }
-
-            else if ("astronauta".equals(cat)) {
-                msg = eliminarConsonants(msg);
-
-            }
-
-//            try (Connection connection = MySQLConnection.getConnection()) {
+        //            try (Connection connection = MySQLConnection.getConnection()) {
 //
-//                String sql = "INSERT INTO missatge (emissor, contingut_missatge, categoria_emissor) VALUES (?, ?, ?)";
+//                String sql = "INSERT INTO missatge_espia (emissor, contingut_missatge) VALUES (?, ?)";
 //                PreparedStatement statement = connection.prepareStatement(sql);
 //
 //                statement.setString(1, codi);
 //                statement.setString(2, msg);
-//                statement.setString(3, cat);
+//
+//            } catch (SQLException e) {
+//                System.out.println("Error: " + e.getMessage());
+//            }
+
+    }
+
+    default void enviarMissatgeAstronauta(String codi_professional, String missatge) {
+
+            String codi = codi_professional;
+            String msg = missatge;
+
+            msg = eliminarConsonants(msg);
+
+//            try (Connection connection = MySQLConnection.getConnection()) {
+//
+//                String sql = "INSERT INTO missatge_espia (emissor, contingut_missatge) VALUES (?, ?)";
+//                PreparedStatement statement = connection.prepareStatement(sql);
+//
+//                statement.setString(1, codi);
+//                statement.setString(2, msg);
 //
 //            } catch (SQLException e) {
 //                System.out.println("Error: " + e.getMessage());
