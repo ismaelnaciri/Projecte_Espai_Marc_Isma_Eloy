@@ -40,10 +40,26 @@ public class Queries implements Agent {
                     statement.close();
                 }
             } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
                 e.printStackTrace();
             }
         }
+    }
 
+    public static void selectVehiclesMecanic(String codi_mecanic) {
+
+        SQLSentence = "SELECT codi_vin FROM vehicle_mecanic WHERE codi_mecanic = ?";
+
+        try {
+            statement = connection.prepareStatement(SQLSentence);
+            statement.setString(1, codi_mecanic);
+
+            result = statement.executeQuery();
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 //    public
