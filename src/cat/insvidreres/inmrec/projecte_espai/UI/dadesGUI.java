@@ -80,9 +80,31 @@ public class dadesGUI extends javax.swing.JFrame {
             dadesTxt6.setText("Adreça: ");
             dadesTxt7.setText("Sexe: ");
             dadesTxt8.setText("Rang Militar: ");
+            jButton2.setText("Missatge Encriptat");
+
+            jButton2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getActionCommand().equals("Missatge Encriptat")) {
+                        missatgeGUI missatgeGUI = new missatgeGUI();
+                        missatgeGUI.setVisible(true);
+                    }
+                }
+            });
         } else if (LoginGUI.categoria.equals("Espia")){
             dadesTxt1.setText("Nom: ");
             dadesTxt2.setText("Telèfon: ");
+            jButton2.setText("Missatge Encriptat");
+
+            jButton2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getActionCommand().equals("Missatge Encriptat")) {
+                        missatgeGUI missatgeGUI = new missatgeGUI();
+                        missatgeGUI.setVisible(true);
+                    }
+                }
+            });
         }
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
