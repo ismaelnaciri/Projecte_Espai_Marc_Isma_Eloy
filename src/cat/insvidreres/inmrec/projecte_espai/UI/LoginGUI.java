@@ -59,7 +59,6 @@ public class LoginGUI extends javax.swing.JFrame {
         enviaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                // Tu código para manejar el evento del botón aquí
                 String seleccion = (String) catComboBox.getSelectedItem();
                 if ("Mecanic".equals(seleccion)) {
                     dadesCrudGUI dadescrudgui = new dadesCrudGUI();
