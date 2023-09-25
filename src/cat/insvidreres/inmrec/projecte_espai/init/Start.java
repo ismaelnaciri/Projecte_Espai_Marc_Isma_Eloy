@@ -20,8 +20,7 @@ public class Start {
 
 
         } catch (SQLException e) {
-            System.out.println("Error:" +
-                    "ç " + e.getMessage());
+            System.out.println("Error:" + e.getMessage());
         } finally {
 
             if (connection.isClosed())

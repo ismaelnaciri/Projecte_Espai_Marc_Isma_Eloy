@@ -70,8 +70,13 @@ public class dadesGUI extends javax.swing.JFrame {
 
 
         getContentPane().setLayout(layout);
-        //        if (LoginGUI.categoria.equals("mecanic"))
-        jLabel1.setText("");
+                if (LoginGUI.categoria.equals("Mecanic")) {
+                    jLabel1.setText("Name: ");
+
+
+
+
+                }
 
 
         layout.setHorizontalGroup(

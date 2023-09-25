@@ -12,6 +12,7 @@ public class Queries implements Agent {
     private static PreparedStatement statement;
     private static ResultSet result;
 
+
     public static void insertCodedMessage(String codi_professional, String message, String categoria) {
 
         SQLSentence = "INSERT INTO missatge (emissor, contingut_missatge, categoria_emissor) VALUES (?, ?, ?)";
@@ -30,6 +31,7 @@ public class Queries implements Agent {
                 System.out.println("Error in inserting");
 
         } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         } finally {
             try {
@@ -46,7 +48,7 @@ public class Queries implements Agent {
         }
     }
 
-    public static void selectVehiclesMecanic(String codi_mecanic) {
+    public static void getVehiclesCodiOfMechanic(String codi_mecanic) {
 
         SQLSentence = "SELECT codi_vin FROM vehicle_mecanic WHERE codi_mecanic = ?";
 
@@ -59,8 +61,71 @@ public class Queries implements Agent {
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                if (result != null)
+                    result.close();
+                if (statement != null)
+                    statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
     }
 
-//    public
+    public static void getVehicles(int codi_vin) {
+
+        SQLSentence = "SELECT * FROM vehicle WHERE codi_vin = ?";
+
+        try {
+            statement = connection.prepareStatement(SQLSentence);
+            statement.setInt(1, codi_vin);
+
+            result = statement.executeQuery();
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (result != null)
+                    result.close();
+                if (statement != null)
+                    statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    public static void insertCoordenades(String codi_astronauta, String cordenades) {
+
+        SQLSentence = "INSERT INTO coordenades(codi_astronauta, num_cordenada) VALUES (?, ?)";
+
+        try {
+            statement = connection.prepareStatement(SQLSentence);
+            statement.setString(1, codi_astronauta);
+            statement.setString(2, cordenades);
+
+
+            int rowsInserted = statement.executeUpdate(SQLSentence);
+
+            if (rowsInserted > 1)
+                System.out.println("Rows inserted correctly");
+            else
+                System.out.println("Error in inserting");
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

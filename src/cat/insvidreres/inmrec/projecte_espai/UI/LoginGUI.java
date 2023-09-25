@@ -62,6 +62,7 @@ public class LoginGUI extends javax.swing.JFrame {
                 String seleccion = (String) catComboBox.getSelectedItem();
                 if ("Mecanic".equals(seleccion)) {
                     dadesCrudGUI dadescrudgui = new dadesCrudGUI();
+                    categoria = seleccion;
                     dadescrudgui.setVisible(true);
                     dispose();
                     JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
