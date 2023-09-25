@@ -55,28 +55,7 @@ public class dadesGUI extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(153, 153, 255));
         jButton2.setText("jButton2");
 
-        jButton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getActionCommand().equals("jButton2")) {
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            new missatgeGUI().setVisible(true);
-                        }
-                    });
-                }
-            }
-        });
-
-        super.setTitle("Projecte PES");
-        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        super.setResizable(false);
-        super.setLocationRelativeTo(null);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-
-
         getContentPane().setLayout(layout);
         /*
         Mecànic: nom, salari, edat, numero del taller, adreça, anys d’experiència, ciutat on treballa i sexe.
@@ -106,43 +85,59 @@ public class dadesGUI extends javax.swing.JFrame {
             dadesTxt2.setText("Telèfon: ");
         }
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(116, 273, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(246, 246, 246))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dadesTxt4)
-                    .addComponent(dadesTxt3)
-                    .addComponent(dadesTxt2)
-                    .addComponent(dadesTxt1)
-                    .addComponent(jButton1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(110, 110, 110))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dadesTxt6)
-                            .addComponent(dadesTxt5)
-                            .addComponent(dadesTxt7)
-                            .addComponent(dadesTxt8))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(116, 273, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(246, 246, 246))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(dadesTxt4)
+                                        .addComponent(dadesTxt3)
+                                        .addComponent(dadesTxt2)
+                                        .addComponent(dadesTxt1)
+                                        .addComponent(jButton1))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jButton2)
+                                                .addGap(110, 110, 110))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(113, 113, 113)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(dadesTxt6)
+                                                        .addComponent(dadesTxt5)
+                                                        .addComponent(dadesTxt7)
+                                                        .addComponent(dadesTxt8))
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addGap(132, 132, 132)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(369, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(jLabel1)
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(dadesTxt1)
+                                        .addComponent(dadesTxt5))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(dadesTxt2)
+                                        .addComponent(dadesTxt6))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(dadesTxt3)
+                                        .addComponent(dadesTxt7))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(dadesTxt4)
+                                        .addComponent(dadesTxt8))
+                                .addGap(151, 151, 151)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton1)
+                                        .addComponent(jButton2))
+                                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         pack();

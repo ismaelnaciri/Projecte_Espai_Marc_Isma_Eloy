@@ -26,8 +26,6 @@ public class Start {
             if (connection.isClosed())
                 System.out.println("Connection closed");
         }
-
-
     }
 
     public static Connection getConnection() { return connection; }
