@@ -16,10 +16,12 @@ public interface Agent {
 
             if ("espia".equals(cat)) {
                 msg = eliminarVocals(msg);
+
             }
 
             else if ("astronauta".equals(cat)) {
                 msg = eliminarConsonants(msg);
+
             }
 
 //            try (Connection connection = MySQLConnection.getConnection()) {
