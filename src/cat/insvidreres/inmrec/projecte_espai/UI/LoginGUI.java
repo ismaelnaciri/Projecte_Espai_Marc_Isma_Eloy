@@ -3,11 +3,17 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author ELOWIS
  */
 public class LoginGUI extends javax.swing.JFrame {
+
+    public static String categoria;
 
     /**
      * Creates new form LoginJFrame
@@ -50,6 +56,39 @@ public class LoginGUI extends javax.swing.JFrame {
 
         enviaButton.setBackground(new java.awt.Color(153, 153, 255));
         enviaButton.setText("ENVIA");
+        enviaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                String seleccion = (String) catComboBox.getSelectedItem();
+                if ("Mecanic".equals(seleccion)) {
+                    dadesCrudGUI dadescrudgui = new dadesCrudGUI();
+                    dadescrudgui.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
+                } else if ("Físic".equals(seleccion)) {
+                    dadesGUI dadesgui = new dadesGUI();
+                    dadesgui.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Has entrat amb Físic");
+                } else if ("Astronauta".equals(seleccion)) {
+                    dadesGUI dadesgui = new dadesGUI();
+                    dadesgui.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Has entrat amb Astronauta");
+                } else if ("Espia".equals(seleccion)) {
+                    dadesGUI dadesgui = new dadesGUI();
+                    dadesgui.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Has entrat amb Espía");
+                }
+            }
+        });
+
+
+        super.setTitle("Projecte PES");
+        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super.setResizable(false);
+        super.setLocationRelativeTo(null);
 
         catComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mecanic", "Físic", "Astronauta", "Espia" }));
         catComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +152,10 @@ public class LoginGUI extends javax.swing.JFrame {
     private void catComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_catComboBoxActionPerformed
+
+    private void enviaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviaButtonActionPerformed
+
+    }//GEN-LAST:event_enviaButtonActionPerformed
 
     /**
      * @param args the command line arguments
