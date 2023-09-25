@@ -64,6 +64,7 @@ public class LoginGUI extends javax.swing.JFrame {
                 if ("Mecanic".equals(seleccion)) {
                     categoria = seleccion;
                     dadesCrudGUI dadescrudgui = new dadesCrudGUI();
+                    categoria = seleccion;
                     dadescrudgui.setVisible(true);
                     dispose();
                     JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
