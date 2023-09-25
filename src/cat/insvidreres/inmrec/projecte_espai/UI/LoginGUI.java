@@ -60,7 +60,7 @@ public class LoginGUI extends javax.swing.JFrame {
         enviaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                String seleccion = catComboBox.getSelectedItem().toString();
+                String seleccion = (String) catComboBox.getSelectedItem();
                 if ("Mecanic".equals(seleccion)) {
                     categoria = seleccion;
                     dadesCrudGUI dadescrudgui = new dadesCrudGUI();
@@ -70,6 +70,7 @@ public class LoginGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
                 } else if ("Físic".equals(seleccion)) {
                     categoria = seleccion;
+                    System.out.println(categoria);
                     dadesGUI dadesgui = new dadesGUI();
                     dadesgui.setVisible(true);
                     // System.out.println(categoria);

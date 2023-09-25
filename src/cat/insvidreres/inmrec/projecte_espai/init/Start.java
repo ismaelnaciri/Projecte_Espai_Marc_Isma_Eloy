@@ -26,8 +26,6 @@ public class Start {
             if (connection.isClosed())
                 System.out.println("Connection closed");
         }
-
-        WindowManager.openLoginWindow();
     }
 
     public static Connection getConnection() { return connection; }
