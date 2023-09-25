@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
  */
 public class LoginGUI extends javax.swing.JFrame {
 
+    public static String categoria;
+
     /**
      * Creates new form LoginJFrame
      */

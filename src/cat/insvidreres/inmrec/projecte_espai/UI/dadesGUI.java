@@ -67,7 +67,13 @@ public class dadesGUI extends javax.swing.JFrame {
         super.setLocationRelativeTo(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+
+
         getContentPane().setLayout(layout);
+        //        if (LoginGUI.categoria.equals("mecanic"))
+        jLabel1.setText("");
+
+
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
