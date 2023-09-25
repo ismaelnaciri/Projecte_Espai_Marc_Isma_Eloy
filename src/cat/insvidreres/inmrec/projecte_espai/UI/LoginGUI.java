@@ -58,18 +58,32 @@ public class LoginGUI extends javax.swing.JFrame {
         enviaButton.setText("ENVIA");
         enviaButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getActionCommand().equals("ENVIA")) {
-                    LoginGUI.super.setVisible(false);
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            new dadesGUI().setVisible(true);
-                        }
-                    });
+            public void actionPerformed(ActionEvent evt) {
+                String seleccion = (String) catComboBox.getSelectedItem();
+                if ("Mecanic".equals(seleccion)) {
+                    dadesCrudGUI dadescrudgui = new dadesCrudGUI();
+                    dadescrudgui.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
+                } else if ("Físic".equals(seleccion)) {
+                    dadesGUI dadesgui = new dadesGUI();
+                    dadesgui.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Has entrat amb Físic");
+                } else if ("Astronauta".equals(seleccion)) {
+                    dadesGUI dadesgui = new dadesGUI();
+                    dadesgui.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Has entrat amb Astronauta");
+                } else if ("Espia".equals(seleccion)) {
+                    dadesGUI dadesgui = new dadesGUI();
+                    dadesgui.setVisible(true);
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Has entrat amb Espía");
                 }
             }
         });
+
 
         super.setTitle("Projecte PES");
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,9 +154,7 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_catComboBoxActionPerformed
 
     private void enviaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviaButtonActionPerformed
-        dadesGUI dadesgui = new dadesGUI();
-        dadesgui.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_enviaButtonActionPerformed
 
     /**
