@@ -11,7 +11,7 @@ public class Start {
     private static Connection connection;
 
     public static void main(String[] args) throws SQLException {
-        WindowManager.openWindow();
+        WindowManager.openLoginWindow();
 
         connection = MySQLConnection.getConnection();
 
