@@ -8,13 +8,14 @@ import java.sql.*;
 public class Queries implements Agent {
 
     private static String SQLSentence;
-    private static Connection connection = Start.getConnection();
+    private static Connection connection;
     private static PreparedStatement statement;
     private static ResultSet result;
 
 
-    public static void insertCodedMessage(String codi_professional, String message, String categoria) {
+    public static void insertCodedMessage(String codi_professional, String message, String categoria) throws SQLException {
 
+        connection = MySQLConnection.getConnection();
         SQLSentence = "INSERT INTO missatge (emissor, contingut_missatge, categoria_emissor) VALUES (?, ?, ?)";
 
         try {
@@ -48,8 +49,9 @@ public class Queries implements Agent {
         }
     }
 
-    public static void getVehiclesCodiOfMechanic(String codi_mecanic) {
+    public static void getVehiclesCodiOfMechanic(String codi_mecanic) throws SQLException {
 
+        connection = MySQLConnection.getConnection();
         SQLSentence = "SELECT codi_vin FROM vehicle_mecanic WHERE codi_mecanic = ?";
 
         try {
@@ -75,8 +77,9 @@ public class Queries implements Agent {
         }
     }
 
-    public static void getVehicles(int codi_vin) {
+    public static void getVehicles(int codi_vin) throws SQLException {
 
+        connection = MySQLConnection.getConnection();
         SQLSentence = "SELECT * FROM vehicle WHERE codi_vin = ?";
 
         try {
@@ -103,8 +106,9 @@ public class Queries implements Agent {
     }
 
 
-    public static void insertCoordenades(String codi_astronauta, String cordenades) {
+    public static void insertCoordenades(String codi_astronauta, String cordenades) throws SQLException {
 
+        connection = MySQLConnection.getConnection();
         SQLSentence = "INSERT INTO coordenades(codi_astronauta, num_cordenada) VALUES (?, ?)";
 
         try {
@@ -127,6 +131,14 @@ public class Queries implements Agent {
     }
 
     public static String getCodigo(String seleccion, String user, String password) {
+
+        try {
+            connection = MySQLConnection.getConnection();
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
 
         SQLSentence = "SELECT codigo FROM " + seleccion + " WHERE (user = ?) AND (psw = ?)";
         String code = "";
