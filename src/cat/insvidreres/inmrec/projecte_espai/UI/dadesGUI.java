@@ -212,6 +212,7 @@ public class dadesGUI extends javax.swing.JFrame {
             dadesTxt5.setText("Ciutat: ");
             dadesTxt6.setText("Adreça: ");
             dadesTxt7.setText("Sexe: ");
+            dadesTxt8.setText(" ");
         } else if (LoginGUI.categoria.equals("Astronauta")){
             dadesTxt1.setText("Nom: ");
             dadesTxt2.setText("Edat: ");
@@ -235,6 +236,12 @@ public class dadesGUI extends javax.swing.JFrame {
         } else if (LoginGUI.categoria.equals("Espia")){
             dadesTxt1.setText("Nom: ");
             dadesTxt2.setText("Telèfon: ");
+            dadesTxt3.setText(" ");
+            dadesTxt4.setText(" ");
+            dadesTxt5.setText(" ");
+            dadesTxt6.setText(" ");
+            dadesTxt7.setText(" ");
+            dadesTxt8.setText(" ");
             jButton2.setText("Missatge Encriptat");
 
             jButton2.addActionListener(new ActionListener() {
@@ -255,34 +262,54 @@ public class dadesGUI extends javax.swing.JFrame {
         ResultSet resultSet = null;
 
         try {
-            // Obtener una conexión a la base de datos utilizando el método getConnection de MySQLConnection
             connection = MySQLConnection.getConnection();
 
-            // Consulta SQL para obtener los datos de la tabla
-            String sql = "SELECT nom, salari, edat, titulacio, ciutat, adreca, sexe FROM fisic WHERE codi = 'FIS001'";
-            preparedStatement = connection.prepareStatement(sql);
+            String sql = null;
+            String categoria = LoginGUI.categoria;
 
-            // Ejecutar la consulta
+            switch (categoria) {
+                case "Fisic":
+                    sql = "SELECT nom, salari, edat, titulacio, ciutat, adreca, sexe FROM fisic WHERE codi = ?";
+                    break;
+                case "Astronauta":
+                    sql = "SELECT nombre, salario, edad, titulo, ciudad, direccion, sexo FROM astronauta WHERE codigo = ?";
+                    break;
+                case "Espia":
+                    sql = "SELECT nombre, salario, edad, titulo, ciudad, direccion, sexo FROM espia WHERE codigo = ?";
+                    break;
+                default:
+                    // Manejar el caso de categoría desconocida si es necesario
+                    break;
+            }
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "FIS001"); // Reemplaza esto con el valor que necesites
+
             resultSet = preparedStatement.executeQuery();
 
-            // Verificar si se encontraron resultados
             if (resultSet.next()) {
-                // Obtener los valores de cada columna y establecerlos en los JLabels
-                mostrarDadesTxt1.setText(resultSet.getString("nom"));
-                mostrarDadesTxt2.setText(resultSet.getString("salari"));
-                mostrarDadesTxt3.setText(resultSet.getString("edat"));
-                mostrarDadesTxt4.setText(resultSet.getString("titulacio"));
-                mostrarDadesTxt5.setText(resultSet.getString("ciutat"));
-                mostrarDadesTxt6.setText(resultSet.getString("adreca"));
-                mostrarDadesTxt7.setText(resultSet.getString("sexe"));
-                mostrarDadesTxt8.setText(resultSet.getString(""));
+                // Declarar el array de JLabels aquí
+                JLabel[] mostrarDadesLabels = {
+                        mostrarDadesTxt1,
+                        mostrarDadesTxt2,
+                        mostrarDadesTxt3,
+                        mostrarDadesTxt4,
+                        mostrarDadesTxt5,
+                        mostrarDadesTxt6,
+                        mostrarDadesTxt7,
+                        mostrarDadesTxt8
+                };
+
+                // Usar un bucle para establecer los valores en los JLabels
+                for (int i = 0; i < mostrarDadesLabels.length; i++) {
+                    mostrarDadesLabels[i].setText(resultSet.getString(i + 1));
+                }
             }
 
         } catch (SQLException e) {
             System.out.println("Error al consultar los datos de la tabla: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            // Cerrar recursos
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
