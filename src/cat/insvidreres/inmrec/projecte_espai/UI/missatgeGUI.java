@@ -3,13 +3,17 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import cat.insvidreres.inmrec.projecte_espai.classes.Agent;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author ELOWIS
  */
-public class missatgeGUI extends javax.swing.JFrame {
+public class missatgeGUI extends javax.swing.JFrame implements Agent {
 
     /**
      * Creates new form missatgeGUI
@@ -43,6 +47,21 @@ public class missatgeGUI extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setText("Envia");
+
+//        String cat = dadesGUI.;
+//        String codi = dadesGUI.;
+//        String missatgeEncriptat = jTextArea1.getText();
+//        jButton1.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                if (e.getActionCommand().equals("Envia") && cat.equals("Espia")){
+//                    enviarMissatgeEspia(codi,missatgeEncriptat);
+//
+//                } else if (e.getActionCommand().equals("Envia") && cat.equals("Astronauta")){
+//                    enviarMissatgeAstronauta(codi,missatgeEncriptat);
+//                }
+//            }
+//        });
 
         super.setTitle("Projecte PES");
         super.setResizable(false);
@@ -118,3 +137,4 @@ public class missatgeGUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
+

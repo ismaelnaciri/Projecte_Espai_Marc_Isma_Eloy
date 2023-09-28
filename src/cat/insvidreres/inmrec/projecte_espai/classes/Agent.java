@@ -14,17 +14,17 @@ public interface Agent {
 
         msg = eliminarVocals(msg);
 
-        //            try (Connection connection = MySQLConnection.getConnection()) {
-//
-//                String sql = "INSERT INTO missatge_espia (emissor, contingut_missatge) VALUES (?, ?)";
-//                PreparedStatement statement = connection.prepareStatement(sql);
-//
-//                statement.setString(1, codi);
-//                statement.setString(2, msg);
-//
-//            } catch (SQLException e) {
-//                System.out.println("Error: " + e.getMessage());
-//            }
+        try (Connection connection = MySQLConnection.getConnection()) {
+
+                String sql = "INSERT INTO missatge_espia (emissor, contingut_missatge) VALUES (?, ?)";
+                PreparedStatement statement = connection.prepareStatement(sql);
+
+                statement.setString(1, codi);
+                statement.setString(2, msg);
+
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
 
     }
 
@@ -35,17 +35,17 @@ public interface Agent {
 
             msg = eliminarConsonants(msg);
 
-//            try (Connection connection = MySQLConnection.getConnection()) {
-//
-//                String sql = "INSERT INTO missatge_espia (emissor, contingut_missatge) VALUES (?, ?)";
-//                PreparedStatement statement = connection.prepareStatement(sql);
-//
-//                statement.setString(1, codi);
-//                statement.setString(2, msg);
-//
-//            } catch (SQLException e) {
-//                System.out.println("Error: " + e.getMessage());
-//            }
+            try (Connection connection = MySQLConnection.getConnection()) {
+
+                String sql = "INSERT INTO missatge_astronauta (emissor, contingut_missatge) VALUES (?, ?)";
+                PreparedStatement statement = connection.prepareStatement(sql);
+
+                statement.setString(1, codi);
+                statement.setString(2, msg);
+
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
     }
     private String eliminarVocals(String mensaje) {
         return mensaje.replaceAll("[AEIOUaeiou]", "");

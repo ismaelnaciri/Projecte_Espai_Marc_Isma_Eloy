@@ -189,5 +189,174 @@ public class Queries implements Agent {
             }
 
         }
+
+    public static void crudDelete(String codi, String categoria) {
+        String tableNameDEL = "";
+
+        if ("astronauta".equalsIgnoreCase(categoria)) {
+            tableNameDEL = "astronauta";
+        } else if ("espia".equalsIgnoreCase(categoria)) {
+            tableNameDEL = "espia";
+        } else if ("fisic".equalsIgnoreCase(categoria)) {
+            tableNameDEL = "fisic";
+        } else if ("mecanic".equalsIgnoreCase(categoria)) {
+            tableNameDEL = "mecanic";
+        } else {
+            System.out.println("Categoria no valida");
+            return;
+        }
+
+        String SQLSentence = "DELETE FROM " + tableNameDEL + " WHERE codi = ?";
+
+        try {
+            statement = connection.prepareStatement(SQLSentence);
+            statement.setString(1, codi);
+
+            int rowsDeleted = statement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                System.out.println("User with codi " + codi + " deleted successfully from " + categoria);
+            } else {
+                System.out.println("User with codi " + codi + " not found in " + categoria);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
+    public static void crudSelect(String codi, String categoria) {
+        String tableNameSELECT = "";
+
+        //ASTRONAUTA
+        if ("astronauta".equalsIgnoreCase(categoria)) {
+            tableNameSELECT = "astronauta";
+
+            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
+
+            try {
+                statement = connection.prepareStatement(SQLSentence);
+                statement.setString(1, codi);
+
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+
+                    String userCode = resultSet.getString("codi");
+                    String userName = resultSet.getString("nombre");
+                    int userSalary = resultSet.getInt("salario");
+
+                    System.out.println("User Details:");
+                    System.out.println("Código: " + userCode);
+                    System.out.println("Nombre: " + userName);
+                    System.out.println("Salario: " + userSalary);
+
+                } else {
+                    System.out.println("User with codi " + codi + " not found in " + categoria);
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+                e.printStackTrace();
+            }
+
+        //ESPIA
+        } else if ("espia".equalsIgnoreCase(categoria)) {
+            tableNameSELECT = "espia";
+
+            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
+
+            try {
+                statement = connection.prepareStatement(SQLSentence);
+                statement.setString(1, codi);
+
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+
+                    String userCode = resultSet.getString("codi");
+                    String userName = resultSet.getString("nombre");
+                    int userSalary = resultSet.getInt("salario");
+
+                    System.out.println("User Details:");
+                    System.out.println("Código: " + userCode);
+                    System.out.println("Nombre: " + userName);
+                    System.out.println("Salario: " + userSalary);
+
+                } else {
+                    System.out.println("User with codi " + codi + " not found in " + categoria);
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+                e.printStackTrace();
+            }
+
+        //ESPIA
+        } else if ("fisic".equalsIgnoreCase(categoria)) {
+            tableNameSELECT = "fisic";
+
+            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
+
+            try {
+                statement = connection.prepareStatement(SQLSentence);
+                statement.setString(1, codi);
+
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+
+                    String userCode = resultSet.getString("codi");
+                    String userName = resultSet.getString("nombre");
+                    int userSalary = resultSet.getInt("salario");
+
+                    System.out.println("User Details:");
+                    System.out.println("Código: " + userCode);
+                    System.out.println("Nombre: " + userName);
+                    System.out.println("Salario: " + userSalary);
+
+                } else {
+                    System.out.println("User with codi " + codi + " not found in " + categoria);
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+                e.printStackTrace();
+            }
+
+
+        //MECANIC
+        } else if ("mecanic".equalsIgnoreCase(categoria)) {
+            tableNameSELECT = "mecanic";
+
+            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
+
+            try {
+                statement = connection.prepareStatement(SQLSentence);
+                statement.setString(1, codi);
+
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+
+                    String userCode = resultSet.getString("codi");
+                    String userName = resultSet.getString("nombre");
+                    int userSalary = resultSet.getInt("salario");
+
+                    System.out.println("User Details:");
+                    System.out.println("Código: " + userCode);
+                    System.out.println("Nombre: " + userName);
+                    System.out.println("Salario: " + userSalary);
+
+                } else {
+                    System.out.println("User with codi " + codi + " not found in " + categoria);
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+                e.printStackTrace();
+            }
+
+        } else {
+            System.out.println("Categoría no válida");
+            return;
+        }
+    }
+}
 
