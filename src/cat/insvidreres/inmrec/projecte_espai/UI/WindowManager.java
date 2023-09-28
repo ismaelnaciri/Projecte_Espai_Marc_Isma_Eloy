@@ -30,43 +30,69 @@ public class WindowManager extends JPanel {
     }
 }
 class DadesPanel extends JPanel {
-    public DadesPanel(){
+    public DadesPanel() {
         setLayout(new BorderLayout());
 
         JLabel jLabel1 = new JLabel("DADES");
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // Establece la fuente y el tamaño
-        jLabel1.setHorizontalAlignment(JLabel.CENTER); // Centra el texto horizontalmente
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24));
+        jLabel1.setHorizontalAlignment(JLabel.CENTER);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50)); // Alinea los botones en el centro
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
 
         JButton b1 = new JButton("PROVA1");
         JButton b2 = new JButton("PROVA2");
-
-        // Tamaño más pequeño para los botones
         Dimension buttonSize = new Dimension(100, 40);
         b1.setPreferredSize(buttonSize);
         b2.setPreferredSize(buttonSize);
-
-        // Cambiar color de fondo de los botones
         Color buttonColor = new Color(153, 153, 255);
         b1.setBackground(buttonColor);
         b2.setBackground(buttonColor);
-
-        // Cambiar color de texto de los botones
         b1.setForeground(Color.WHITE);
         b2.setForeground(Color.WHITE);
-
-        // Cambiar fuente y tamaño de texto de los botones
         Font buttonFont = new java.awt.Font("Segoe UI Black", Font.PLAIN, 16);
         b1.setFont(buttonFont);
         b2.setFont(buttonFont);
+
+        JPanel formPanel = new JPanel();
+        formPanel.setLayout(new GridLayout(7, 2, 10, 10)); // Establece un diseño de cuadrícula para el formulario
+
+        JLabel label1 = new JLabel("Nom: ");
+        JTextField textField1 = new JTextField();
+        JLabel label2 = new JLabel("Salari: ");
+        JTextField textField2 = new JTextField();
+        JLabel label3 = new JLabel("Edat: ");
+        JTextField textField3 = new JTextField();
+        JLabel label4 = new JLabel("Titulació: ");
+        JTextField textField4 = new JTextField();
+        JLabel label5 = new JLabel("Ciutat: ");
+        JTextField textField5 = new JTextField();
+        JLabel label6 = new JLabel("Adreça: ");
+        JTextField textField6 = new JTextField();
+        JLabel label7 = new JLabel("Sexe: ");
+        JTextField textField7 = new JTextField();
+
+        formPanel.add(label1);
+        formPanel.add(textField1);
+        formPanel.add(label2);
+        formPanel.add(textField2);
+        formPanel.add(label3);
+        formPanel.add(textField3);
+        formPanel.add(label4);
+        formPanel.add(textField4);
+        formPanel.add(label5);
+        formPanel.add(textField5);
+        formPanel.add(label6);
+        formPanel.add(textField6);
+        formPanel.add(label7);
+        formPanel.add(textField7);
 
         buttonPanel.add(b1);
         buttonPanel.add(b2);
 
         add(jLabel1, BorderLayout.NORTH);
-        add(buttonPanel, BorderLayout.CENTER);
+        add(formPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
     }
 }
 

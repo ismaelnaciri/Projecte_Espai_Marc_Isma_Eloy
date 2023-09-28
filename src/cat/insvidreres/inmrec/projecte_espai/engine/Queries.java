@@ -126,6 +126,19 @@ public class Queries implements Agent {
         }
     }
 
+    public static void getDadesFisic() {
 
+    }
+
+    public static void getDadesAstronauta() {
+
+    }
+
+    public static void getDadesEspia() {
+
+    }
+
+
+    // Guardar en variables -> Codigo i Categoria
 
 }

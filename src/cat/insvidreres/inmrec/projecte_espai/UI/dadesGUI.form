@@ -51,14 +51,37 @@
                       <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dadesTxt6" min="-2" max="-2" attributes="0"/>
-                          <Component id="dadesTxt5" min="-2" max="-2" attributes="0"/>
-                          <Component id="dadesTxt7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dadesTxt8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="mostrarDadesTxt1" min="-2" max="-2" attributes="0"/>
+                          <Component id="mostrarDadesTxt2" min="-2" max="-2" attributes="0"/>
+                          <Component id="mostrarDadesTxt3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mostrarDadesTxt4" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="dadesTxt6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="mostrarDadesTxt6" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="dadesTxt5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="mostrarDadesTxt5" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="dadesTxt7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="mostrarDadesTxt7" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="dadesTxt8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="mostrarDadesTxt8" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="245" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -73,28 +96,36 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="dadesTxt1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dadesTxt5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mostrarDadesTxt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mostrarDadesTxt5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="dadesTxt2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dadesTxt6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mostrarDadesTxt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mostrarDadesTxt6" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="dadesTxt3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dadesTxt7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mostrarDadesTxt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mostrarDadesTxt7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="dadesTxt4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dadesTxt8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mostrarDadesTxt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mostrarDadesTxt8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="269" max="32767" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,22 +154,86 @@
         </Property>
         <Property name="text" type="java.lang.String" value="jButton2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="dadesTxt1">
     </Component>
     <Component class="javax.swing.JLabel" name="dadesTxt2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="d"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dadesTxt3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="d"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dadesTxt4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="d"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dadesTxt5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="d"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dadesTxt6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="d"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dadesTxt7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="d"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dadesTxt8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="d"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mostrarDadesTxt1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mostrarDadesTxt2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mostrarDadesTxt3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel4"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mostrarDadesTxt4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel5"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mostrarDadesTxt5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel6"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mostrarDadesTxt6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel7"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mostrarDadesTxt7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel8"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mostrarDadesTxt8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel9"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
