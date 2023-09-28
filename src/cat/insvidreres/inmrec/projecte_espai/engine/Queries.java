@@ -261,8 +261,10 @@ public class Queries implements Agent {
     }
         public static String getCodigo (String seleccion, String user, String password){
 
+//            connection = MySQLConnection.getConnection();
             SQLSentence = "SELECT codigo FROM " + seleccion + " WHERE (user = ?) AND (psw = ?)";
             String code = "";
+
 
             try {
                 statement = connection.prepareStatement(SQLSentence);
@@ -280,4 +282,4 @@ public class Queries implements Agent {
             return code;
         }
     }
-}
+

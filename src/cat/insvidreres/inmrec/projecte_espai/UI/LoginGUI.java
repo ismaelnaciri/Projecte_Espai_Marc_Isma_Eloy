@@ -19,6 +19,10 @@ public class LoginGUI extends javax.swing.JFrame {
     public static String categoria = "";
     public static String codigo = "";
 
+    public static String usr = "";
+
+    public static String psw = "";
+
 
     /**
      * Creates new form LoginJFrame
@@ -78,6 +82,8 @@ public class LoginGUI extends javax.swing.JFrame {
                     dadesCrudGUI dadescrudgui = new dadesCrudGUI();
                     categoria = seleccion;
                     codigo = code;
+                    psw = password;
+                    usr = user;
                     dadescrudgui.setVisible(true);
                     dispose();
                     JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
