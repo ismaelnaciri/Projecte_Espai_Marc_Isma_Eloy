@@ -126,6 +126,25 @@ public class Queries implements Agent {
         }
     }
 
+    public static String getCodigo(String seleccion, String user, String password) {
 
+        SQLSentence = "SELECT codigo FROM " + seleccion + " WHERE (user = ?) AND (psw = ?)";
+        String code = "";
+
+        try {
+            statement = connection.prepareStatement(SQLSentence);
+            statement.setString(1, user);
+            statement.setString(2, password);
+
+            result = statement.executeQuery();
+
+            code = result.getString("codigo");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return code;
+    }
 
 }
