@@ -8,13 +8,14 @@ import java.sql.*;
 public class Queries implements Agent {
 
     private static String SQLSentence;
-    private static Connection connection = Start.getConnection();
+    private static Connection connection;
     private static PreparedStatement statement;
     private static ResultSet result;
 
 
-    public static void insertCodedMessage(String codi_professional, String message, String categoria) {
+    public static void insertCodedMessage(String codi_professional, String message, String categoria) throws SQLException {
 
+        connection = MySQLConnection.getConnection();
         SQLSentence = "INSERT INTO missatge (emissor, contingut_missatge, categoria_emissor) VALUES (?, ?, ?)";
 
         try {
@@ -103,8 +104,9 @@ public class Queries implements Agent {
     }
 
 
-    public static void insertCoordenades(String codi_astronauta, String cordenades) {
+    public static void insertCoordenades(String codi_astronauta, String cordenades) throws SQLException {
 
+        connection = MySQLConnection.getConnection();
         SQLSentence = "INSERT INTO coordenades(codi_astronauta, num_cordenada) VALUES (?, ?)";
 
         try {
@@ -124,162 +126,35 @@ public class Queries implements Agent {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
-
     }
 
-    public static void crudDelete(String codi, String categoria) {
-        String tableNameDEL = "";
-
-        if ("astronauta".equalsIgnoreCase(categoria)) {
-            tableNameDEL = "astronauta";
-        } else if ("espia".equalsIgnoreCase(categoria)) {
-            tableNameDEL = "espia";
-        } else if ("fisic".equalsIgnoreCase(categoria)) {
-            tableNameDEL = "fisic";
-        } else if ("mecanic".equalsIgnoreCase(categoria)) {
-            tableNameDEL = "mecanic";
-        } else {
-            System.out.println("Categoria no valida");
-            return;
-        }
-
-        String SQLSentence = "DELETE FROM " + tableNameDEL + " WHERE codi = ?";
+    public static String getCodigo(String seleccion, String user, String password) {
 
         try {
-            statement = connection.prepareStatement(SQLSentence);
-            statement.setString(1, codi);
+            connection = MySQLConnection.getConnection();
 
-            int rowsDeleted = statement.executeUpdate();
-
-            if (rowsDeleted > 0) {
-                System.out.println("User with codi " + codi + " deleted successfully from " + categoria);
-            } else {
-                System.out.println("User with codi " + codi + " not found in " + categoria);
-            }
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
-    }
 
-    public static void crudSelect(String codi, String categoria) {
-        String tableNameSELECT = "";
+        SQLSentence = "SELECT codigo FROM " + seleccion + " WHERE (user = ?) AND (psw = ?)";
+        String code = "";
 
-        //ASTRONAUTA
-        if ("astronauta".equalsIgnoreCase(categoria)) {
-            tableNameSELECT = "astronauta";
+        try {
+            statement = connection.prepareStatement(SQLSentence);
+            statement.setString(1, user);
+            statement.setString(2, password);
 
-            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
+            result = statement.executeQuery();
 
-            try {
-                statement = connection.prepareStatement(SQLSentence);
-                statement.setString(1, codi);
-
-                ResultSet resultSet = statement.executeQuery();
-
-                if (resultSet.next()) {
-
-                    String userCode = resultSet.getString("codi");
-                    String userName = resultSet.getString("nombre");
-                    int userSalary = resultSet.getInt("salario");
-
-                    System.out.println("User Details:");
-                    System.out.println("Código: " + userCode);
-                    System.out.println("Nombre: " + userName);
-                    System.out.println("Salario: " + userSalary);
-
-                } else {
-                    System.out.println("User with codi " + codi + " not found in " + categoria);
-                }
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
-
-            //ESPIA
-        } else if ("espia".equalsIgnoreCase(categoria)) {
-            tableNameSELECT = "espia";
-
-            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
-
-            try {
-                statement = connection.prepareStatement(SQLSentence);
-                statement.setString(1, codi);
-
-                ResultSet resultSet = statement.executeQuery();
-
-                if (resultSet.next()) {
-
-                    String userCode = resultSet.getString("codi");
-                    String userName = resultSet.getString("nombre");
-                    int userSalary = resultSet.getInt("salario");
-
-                    System.out.println("User Details:");
-                    System.out.println("Código: " + userCode);
-                    System.out.println("Nombre: " + userName);
-                    System.out.println("Salario: " + userSalary);
-
-                } else {
-                    System.out.println("User with codi " + codi + " not found in " + categoria);
-                }
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
-
-            //ESPIA
-        } else if ("fisic".equalsIgnoreCase(categoria)) {
-            tableNameSELECT = "fisic";
-
-            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
-
-            try {
-                statement = connection.prepareStatement(SQLSentence);
-                statement.setString(1, codi);
-
-                ResultSet resultSet = statement.executeQuery();
-
-                if (resultSet.next()) {
-
-                    String userCode = resultSet.getString("codi");
-                    String userName = resultSet.getString("nombre");
-                    int userSalary = resultSet.getInt("salario");
-
-                    System.out.println("User Details:");
-                    System.out.println("Código: " + userCode);
-                    System.out.println("Nombre: " + userName);
-                    System.out.println("Salario: " + userSalary);
-
-                } else {
-                    System.out.println("User with codi " + codi + " not found in " + categoria);
-                }
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
+            code = result.getString("codigo");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
-    }
-        public static String getCodigo (String seleccion, String user, String password){
 
-//            connection = MySQLConnection.getConnection();
-            SQLSentence = "SELECT codigo FROM " + seleccion + " WHERE (user = ?) AND (psw = ?)";
-            String code = "";
-
-
-            try {
-                statement = connection.prepareStatement(SQLSentence);
-                statement.setString(1, user);
-                statement.setString(2, password);
-
-                result = statement.executeQuery();
-
-                code = result.getString("codigo");
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
-
-            return code;
-        }
+        return code;
     }
 
+}
