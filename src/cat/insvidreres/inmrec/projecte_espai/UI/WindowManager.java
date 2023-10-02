@@ -48,6 +48,15 @@ class DadesPanel extends JPanel {
         JButton b2 = new JButton("PROVA2");
         Dimension buttonSize = new Dimension(100, 40);
         b1.setPreferredSize(buttonSize);
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("PROVA1")) {
+                    llistaVehiclesGUI test = new llistaVehiclesGUI();
+                    test.setVisible(true);
+                }
+            }
+        });
         b2.setPreferredSize(buttonSize);
         Color buttonColor = new Color(153, 153, 255);
         b1.setBackground(buttonColor);
