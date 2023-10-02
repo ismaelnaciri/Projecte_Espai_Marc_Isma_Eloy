@@ -131,29 +131,38 @@ public class Queries implements Agent {
     }
 
     public static String getCodigo(String seleccion, String user, String password) {
-
-        try {
-            connection = MySQLConnection.getConnection();
-
-        } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        SQLSentence = "SELECT codigo FROM " + seleccion + " WHERE (user = ?) AND (psw = ?)";
         String code = "";
 
         try {
+            connection = MySQLConnection.getConnection();
+            SQLSentence = "SELECT codi FROM " + seleccion + " WHERE user = ? AND psw = ?";
             statement = connection.prepareStatement(SQLSentence);
             statement.setString(1, user);
             statement.setString(2, password);
 
             result = statement.executeQuery();
 
-            code = result.getString("codigo");
+            if (result.next()) {
+                code = result.getString("codi");
+            }
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            // Asegúrate de cerrar la conexión, el statement y el resultset aquí
+            try {
+                if (result != null) {
+                    result.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar recursos: " + e.getMessage());
+            }
         }
 
         return code;
