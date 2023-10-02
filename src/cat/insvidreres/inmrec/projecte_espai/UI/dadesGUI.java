@@ -276,7 +276,6 @@ public class dadesGUI extends javax.swing.JFrame {
                 sql = "SELECT nom_clau, telefon FROM espia WHERE codi = ?";
             }
 
-
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, LoginGUI.codigo);
 
