@@ -205,7 +205,7 @@ public class dadesGUI extends javax.swing.JFrame {
         Astronauta: data primer vol, nom, edat, missions ok, sexe, missions ko, adreça i rang militar.
         Espia: nom clau i telèfon de contacte.
         */
-        if (LoginGUI.categoria.equals("Físic")) {
+        if (LoginGUI.categoria.equals("Fisic")) {
             dadesTxt1.setText("Nom: ");
             dadesTxt2.setText("Salari: ");
             dadesTxt3.setText("Edat: ");
@@ -213,7 +213,20 @@ public class dadesGUI extends javax.swing.JFrame {
             dadesTxt5.setText("Ciutat: ");
             dadesTxt6.setText("Adreça: ");
             dadesTxt7.setText("Sexe: ");
-            dadesTxt8.setText(" ");
+            dadesTxt8.setVisible(false);
+
+            jButton1.setText("Fitxar");
+            jButton1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getActionCommand().equals("Fitxar")) {
+
+                    }
+                }
+            });
+
+            jButton1.setVisible(true);
+
         } else if (LoginGUI.categoria.equals("Astronauta")){
             dadesTxt1.setText("Nom: ");
             dadesTxt2.setText("Edat: ");

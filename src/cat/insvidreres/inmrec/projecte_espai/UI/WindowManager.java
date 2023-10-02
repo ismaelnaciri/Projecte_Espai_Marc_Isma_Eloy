@@ -2,6 +2,8 @@ package cat.insvidreres.inmrec.projecte_espai.UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class WindowManager extends JPanel {
     
@@ -30,6 +32,8 @@ public class WindowManager extends JPanel {
     }
 }
 class DadesPanel extends JPanel {
+
+
     public DadesPanel() {
         setLayout(new BorderLayout());
 
@@ -98,6 +102,9 @@ class DadesPanel extends JPanel {
 
 
 class CrudPanel extends JPanel {
+
+    public JButton b1, b2, b3, b4;
+
     public CrudPanel() {
         setLayout(new BorderLayout());
 
@@ -113,10 +120,10 @@ class CrudPanel extends JPanel {
         add(buttonPanel, BorderLayout.CENTER);
 
         // Crea los botones
-        JButton b1 = new JButton("CREATE");
-        JButton b2 = new JButton("READ");
-        JButton b3 = new JButton("UPDATE");
-        JButton b4 = new JButton("DELETE");
+        b1 = new JButton("CREATE");
+        b2 = new JButton("READ");
+        b3 = new JButton("UPDATE");
+        b4 = new JButton("DELETE");
 
         // Configura el tamaño deseado para los botones
         Dimension buttonSize = new Dimension(150, 60);
@@ -125,6 +132,42 @@ class CrudPanel extends JPanel {
         b3.setPreferredSize(buttonSize);
         b4.setPreferredSize(buttonSize);
 
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("CREATE")) {
+
+                }
+            }
+        });
+
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("READ")) {
+
+                }
+            }
+        });
+
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("UPDATE")) {
+
+                }
+            }
+        });
+
+
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("DELETE")) {
+
+                }
+            }
+        });
         // Configura el fondo de los botones
         Color purple = new Color(153, 153, 255);
         b1.setBackground(purple);
