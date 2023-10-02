@@ -50,15 +50,20 @@ public class missatgeGUI extends javax.swing.JFrame implements Agent {
         jButton1.setText("Envia");
 
         String cat = LoginGUI.categoria;
-        String codi = Queries.getCodigo(LoginGUI.categoria,LoginGUI.usr, LoginGUI.psw);
-        String missatgeEncriptat = jTextArea1.getText();
+        String codi = LoginGUI.codigo;
+        System.out.println("Test: "+codi);
+
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("Envia") && cat.equals("Espia")){
+
+                    String missatgeEncriptat = jTextArea1.getText();
                     enviarMissatgeEspia(codi,missatgeEncriptat);
 
                 } else if (e.getActionCommand().equals("Envia") && cat.equals("Astronauta")){
+                    String missatgeEncriptat = jTextArea1.getText();
+                    System.out.println(missatgeEncriptat);
                     enviarMissatgeAstronauta(codi,missatgeEncriptat);
                 }
             }

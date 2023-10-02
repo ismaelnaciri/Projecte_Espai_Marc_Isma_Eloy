@@ -15,13 +15,17 @@ public interface Agent {
         msg = eliminarVocals(msg);
 
         try (Connection connection = MySQLConnection.getConnection()) {
+            System.out.println("Codi: " +codi);
+            System.out.println("Msg: " +msg);
 
-                String sql = "INSERT INTO missatge_espia (emissor, contingut_missatge) VALUES (?, ?)";
-                PreparedStatement statement = connection.prepareStatement(sql);
+            String sql = "INSERT INTO missatge_espia (emissor, contingut_missatge) VALUES (?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
 
-                statement.setString(1, codi);
-                statement.setString(2, msg);
+            statement.setString(1, codi);
+            statement.setString(2, msg);
 
+            statement.executeUpdate();
+            System.out.println("missatge enviat");
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
             }
@@ -35,13 +39,18 @@ public interface Agent {
 
             msg = eliminarConsonants(msg);
 
+
             try (Connection connection = MySQLConnection.getConnection()) {
+
 
                 String sql = "INSERT INTO missatge_astronauta (emissor, contingut_missatge) VALUES (?, ?)";
                 PreparedStatement statement = connection.prepareStatement(sql);
 
                 statement.setString(1, codi);
                 statement.setString(2, msg);
+
+                statement.executeUpdate();
+                System.out.println("missatge enviat");
 
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());

@@ -275,7 +275,7 @@ public class dadesGUI extends javax.swing.JFrame {
                 mostrarDadesTxt5.setText(resultSet.getString("ciutat"));
                 mostrarDadesTxt6.setText(resultSet.getString("adreca"));
                 mostrarDadesTxt7.setText(resultSet.getString("sexe"));
-                mostrarDadesTxt8.setText(resultSet.getString(""));
+//                mostrarDadesTxt8.setText(resultSet.getString(""));
             }
 
         } catch (SQLException e) {

@@ -128,33 +128,70 @@ public class Queries implements Agent {
         }
     }
 
-    public static String getCodigo(String seleccion, String user, String password) {
+//    public static String getCodigo(String seleccion, String user, String password) {
+//
+//        try {
+//            connection = MySQLConnection.getConnection();
+//
+//        } catch (SQLException e) {
+//            System.out.println("Error: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//
+//        SQLSentence = "SELECT codigo FROM " + seleccion + " WHERE (user = ?) AND (psw = ?)";
+//        String code = "";
+//
+//        try {
+//            statement = connection.prepareStatement(SQLSentence);
+//            statement.setString(1, user);
+//            statement.setString(2, password);
+//
+//            result = statement.executeQuery();
+//
+//            code = result.getString("codigo");
+//        } catch (SQLException e) {
+//            System.out.println("Error: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//
+//        return code;
+//    }
+public static String getCodigo(String seleccion, String user, String password) {
+    String code = "";
+
+    try {
+        connection = MySQLConnection.getConnection();
+        SQLSentence = "SELECT codi FROM " + seleccion + " WHERE user = ? AND psw = ?";
+        statement = connection.prepareStatement(SQLSentence);
+        statement.setString(1, user);
+        statement.setString(2, password);
+
+        result = statement.executeQuery();
+
+        if (result.next()) {
+            code = result.getString("codi");
+        }
+    } catch (SQLException e) {
+        System.out.println("Error: " + e.getMessage());
+        e.printStackTrace();
+    } finally {
 
         try {
-            connection = MySQLConnection.getConnection();
-
+            if (result != null) {
+                result.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
         } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println("Error al cerrar recursos: " + e.getMessage());
         }
-
-        SQLSentence = "SELECT codigo FROM " + seleccion + " WHERE (user = ?) AND (psw = ?)";
-        String code = "";
-
-        try {
-            statement = connection.prepareStatement(SQLSentence);
-            statement.setString(1, user);
-            statement.setString(2, password);
-
-            result = statement.executeQuery();
-
-            code = result.getString("codigo");
-        } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        return code;
     }
+
+    return code;
+}
 
 }
