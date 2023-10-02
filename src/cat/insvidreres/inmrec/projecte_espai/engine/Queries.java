@@ -1,5 +1,6 @@
 package cat.insvidreres.inmrec.projecte_espai.engine;
 
+import cat.insvidreres.inmrec.projecte_espai.UI.CreateWorkerGUI;
 import cat.insvidreres.inmrec.projecte_espai.UI.LoginGUI;
 import cat.insvidreres.inmrec.projecte_espai.classes.Agent;
 import cat.insvidreres.inmrec.projecte_espai.init.Start;
@@ -297,5 +298,145 @@ public class Queries implements Agent {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void crudInsert(String categoria) {
+        String codi, nom, salari,
+                edat, telefon, num_taller,
+                adreca, anys_exp, ciutat,
+                titulacio, primer_vol, missions_ok, missions_ko,
+                rang_militar,sexe, user, passw;
+
+        if (categoria.equals("Mecanic")) {
+            codi = CreateWorkerGUI.getLabel1Value();
+            nom = CreateWorkerGUI.getLabel2Value();
+            salari = CreateWorkerGUI.getLabel3Value();
+            edat = CreateWorkerGUI.getLabel4Value();
+            num_taller = CreateWorkerGUI.getLabel5Value();
+            adreca = CreateWorkerGUI.getLabel6Value();
+            anys_exp = CreateWorkerGUI.getLabel7Value();
+            ciutat = CreateWorkerGUI.getLabel8Value();
+            sexe = CreateWorkerGUI.getLabel9Value();
+            user = CreateWorkerGUI.getLabel10Value();
+            passw = CreateWorkerGUI.getLabel11Value();
+
+            SQLSentence = "INSERT INTO " + categoria + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            try {
+                statement = connection.prepareStatement(SQLSentence);
+
+                statement.setString(1, codi);
+                statement.setString(2, nom);
+                statement.setString(3, salari);
+                statement.setString(4, edat);
+                statement.setString(5, num_taller);
+                statement.setString(6, adreca);
+                statement.setString(7, anys_exp);
+                statement.setString(8, ciutat);
+                statement.setString(9, sexe);
+                statement.setString(10, user);
+                statement.setString(11, passw);
+
+                statement.executeQuery();
+
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+            System.out.println("pepepepepepepepep");
+
+        }
+        else if (categoria.equals("Fisic")) {
+            codi = CreateWorkerGUI.getLabel1Value();
+            nom = CreateWorkerGUI.getLabel2Value();
+            salari = CreateWorkerGUI.getLabel3Value();
+            edat = CreateWorkerGUI.getLabel4Value();
+            titulacio = CreateWorkerGUI.getLabel5Value();
+            adreca = CreateWorkerGUI.getLabel6Value();
+            ciutat = CreateWorkerGUI.getLabel7Value();
+            sexe = CreateWorkerGUI.getLabel8Value();
+            user = CreateWorkerGUI.getLabel9Value();
+            passw = CreateWorkerGUI.getLabel10Value();
+
+            SQLSentence = "INSERT INTO " + categoria + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            try {
+                statement = connection.prepareStatement(SQLSentence);
+
+                statement.setString(1, codi);
+                statement.setString(2, nom);
+                statement.setString(3, salari);
+                statement.setString(4, edat);
+                statement.setString(5, titulacio);
+                statement.setString(6, adreca);
+                statement.setString(7, ciutat);
+                statement.setString(8, sexe);
+                statement.setString(9, user);
+                statement.setString(10, passw);
+
+                statement.executeQuery();
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+
+        else if (categoria.equals("Astronauta")) {
+            codi = CreateWorkerGUI.getLabel1Value();
+            nom = CreateWorkerGUI.getLabel2Value();
+            edat = CreateWorkerGUI.getLabel3Value();
+            primer_vol = CreateWorkerGUI.getLabel4Value();
+            missions_ok = CreateWorkerGUI.getLabel5Value();
+            missions_ko = CreateWorkerGUI.getLabel6Value();
+            adreca = CreateWorkerGUI.getLabel7Value();
+            sexe = CreateWorkerGUI.getLabel8Value();
+            rang_militar = CreateWorkerGUI.getLabel9Value();
+            user = CreateWorkerGUI.getLabel10Value();
+            passw = CreateWorkerGUI.getLabel11Value();
+
+            SQLSentence = "INSERT INTO " + categoria + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            try {
+                statement = connection.prepareStatement(SQLSentence);
+
+                statement.setString(1, codi);
+                statement.setString(2, nom);
+                statement.setString(3, edat);
+                statement.setString(4, primer_vol);
+                statement.setString(5, missions_ok);
+                statement.setString(6, missions_ko);
+                statement.setString(7, adreca);
+                statement.setString(8, sexe);
+                statement.setString(9, rang_militar);
+                statement.setString(10, user);
+                statement.setString(11, passw);
+
+                statement.executeQuery();
+            } catch (SQLException e) {
+                System.out.println("Error : " + e.getMessage());
+            }
+        }
+
+        else if (categoria.equals("Espia")) {
+            codi = CreateWorkerGUI.getLabel1Value();
+            nom = CreateWorkerGUI.getLabel2Value();
+            telefon = CreateWorkerGUI.getLabel3Value();
+            user = CreateWorkerGUI.getLabel4Value();
+            passw = CreateWorkerGUI.getLabel5Value();
+
+            SQLSentence = "INSERT INTO " + categoria + " VALUES(?, ?, ?, ?, ?)";
+
+            try {
+                statement = connection.prepareStatement(SQLSentence);
+
+                statement.setString(1, codi);
+                statement.setString(2, nom);
+                statement.setString(3, telefon);
+                statement.setString(4, user);
+                statement.setString(5, passw);
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+
     }
 }

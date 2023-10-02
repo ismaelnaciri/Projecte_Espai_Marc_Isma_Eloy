@@ -145,7 +145,8 @@ class CrudPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("CREATE")) {
-
+                    CreateWorkerGUI cwgui = new CreateWorkerGUI();
+                    cwgui.setVisible(true);
                 }
             }
         });
