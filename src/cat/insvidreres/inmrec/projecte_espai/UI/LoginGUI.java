@@ -72,36 +72,39 @@ public class LoginGUI extends javax.swing.JFrame {
 
                 String code = Queries.getCodigo(seleccion, user, password);
 
+                if (codigo != null && !codigo.isEmpty()) {
+                    if ("Mecanic".equals(seleccion)) {
+                        categoria = seleccion;
+                        dadesCrudGUI dadescrudgui = new dadesCrudGUI();
+                        categoria = seleccion;
+                        codigo = code;
+                        dadescrudgui.setVisible(true);
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
+                    } else if ("Físic".equals(seleccion)) {
+                        categoria = seleccion;
+                        System.out.println(categoria);
+                        dadesGUI dadesgui = new dadesGUI();
+                        dadesgui.setVisible(true);
+                        // System.out.println(categoria);
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "Has entrat amb Físic");
+                    } else if ("Astronauta".equals(seleccion)) {
+                        categoria = seleccion;
+                        dadesGUI dadesgui = new dadesGUI();
+                        dadesgui.setVisible(true);
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "Has entrat amb Astronauta");
+                    } else if ("Espia".equals(seleccion)) {
+                        categoria = seleccion;
 
-                if ("Mecanic".equals(seleccion)) {
-                    categoria = seleccion;
-                    dadesCrudGUI dadescrudgui = new dadesCrudGUI();
-                    categoria = seleccion;
-                    codigo = code;
-                    dadescrudgui.setVisible(true);
-                    dispose();
-                    JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
-                } else if ("Físic".equals(seleccion)) {
-                    categoria = seleccion;
-                    System.out.println(categoria);
-                    dadesGUI dadesgui = new dadesGUI();
-                    dadesgui.setVisible(true);
-                    // System.out.println(categoria);
-                    dispose();
-                    JOptionPane.showMessageDialog(null, "Has entrat amb Físic");
-                } else if ("Astronauta".equals(seleccion)) {
-                    categoria = seleccion;
-                    dadesGUI dadesgui = new dadesGUI();
-                    dadesgui.setVisible(true);
-                    dispose();
-                    JOptionPane.showMessageDialog(null, "Has entrat amb Astronauta");
-                } else if ("Espia".equals(seleccion)) {
-                    categoria = seleccion;
-
-                    dadesGUI dadesgui = new dadesGUI();
-                    dadesgui.setVisible(true);
-                    dispose();
-                    JOptionPane.showMessageDialog(null, "Has entrat amb Espía");
+                        dadesGUI dadesgui = new dadesGUI();
+                        dadesgui.setVisible(true);
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "Has entrat amb Espía");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuari o contrasenya incorrecte.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -178,6 +181,10 @@ public class LoginGUI extends javax.swing.JFrame {
     private void enviaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviaButtonActionPerformed
 
     }//GEN-LAST:event_enviaButtonActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> catComboBox;
