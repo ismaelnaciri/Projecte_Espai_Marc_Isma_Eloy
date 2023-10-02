@@ -6,6 +6,8 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
 import cat.insvidreres.inmrec.projecte_espai.classes.Agent;
 import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
 
+import cat.insvidreres.inmrec.projecte_espai.classes.Agent;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
