@@ -1,5 +1,6 @@
 package cat.insvidreres.inmrec.projecte_espai.engine;
 
+import cat.insvidreres.inmrec.projecte_espai.UI.LoginGUI;
 import cat.insvidreres.inmrec.projecte_espai.classes.Agent;
 import cat.insvidreres.inmrec.projecte_espai.init.Start;
 
@@ -144,25 +145,12 @@ public class Queries implements Agent {
 
             if (result.next()) {
                 code = result.getString("codi");
+                LoginGUI.codigo = code;
             }
+
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
-        } finally {
-            // Asegúrate de cerrar la conexión, el statement y el resultset aquí
-            try {
-                if (result != null) {
-                    result.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar recursos: " + e.getMessage());
-            }
         }
 
         return code;

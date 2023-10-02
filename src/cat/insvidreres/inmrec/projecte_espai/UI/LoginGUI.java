@@ -70,9 +70,10 @@ public class LoginGUI extends javax.swing.JFrame {
                 char[] temp = passwordTextField.getPassword();
                 String password = new String(temp);
 
-                String code = Queries.getCodigo(seleccion, user, password);
+                String code = Queries.getCodigo(seleccion, user, password); //code returns null
+                System.out.println(code);
 
-                if (codigo != null && !codigo.isEmpty()) {
+                if (code != null && !code.isEmpty()) {
                     if ("Mecanic".equals(seleccion)) {
                         categoria = seleccion;
                         dadesCrudGUI dadescrudgui = new dadesCrudGUI();
@@ -83,7 +84,6 @@ public class LoginGUI extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
                     } else if ("Físic".equals(seleccion)) {
                         categoria = seleccion;
-                        System.out.println(categoria);
                         dadesGUI dadesgui = new dadesGUI();
                         dadesgui.setVisible(true);
                         // System.out.println(categoria);
@@ -97,12 +97,12 @@ public class LoginGUI extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Has entrat amb Astronauta");
                     } else if ("Espia".equals(seleccion)) {
                         categoria = seleccion;
-
                         dadesGUI dadesgui = new dadesGUI();
                         dadesgui.setVisible(true);
                         dispose();
                         JOptionPane.showMessageDialog(null, "Has entrat amb Espía");
                     }
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuari o contrasenya incorrecte.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -115,7 +115,7 @@ public class LoginGUI extends javax.swing.JFrame {
         super.setResizable(false);
         super.setLocationRelativeTo(null);
 
-        catComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mecanic", "Físic", "Astronauta", "Espia" }));
+        catComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mecanic", "Fisic", "Astronauta", "Espia" }));
         catComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 catComboBoxActionPerformed(evt);

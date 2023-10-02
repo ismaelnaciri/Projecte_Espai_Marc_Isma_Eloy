@@ -4,6 +4,7 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
  */
 
 import cat.insvidreres.inmrec.projecte_espai.engine.MySQLConnection;
+import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -273,10 +274,10 @@ public class dadesGUI extends javax.swing.JFrame {
                     sql = "SELECT nom, salari, edat, titulacio, ciutat, adreca, sexe FROM fisic WHERE codi = ?";
                     break;
                 case "Astronauta":
-                    sql = "SELECT nombre, salario, edad, titulo, ciudad, direccion, sexo FROM astronauta WHERE codigo = ?";
+                    sql = "SELECT nom, edat, primer_vol, missions_OK, missions_KO, adreca, sexe, rang_militar FROM astronauta WHERE codi = ?";
                     break;
                 case "Espia":
-                    sql = "SELECT nombre, salario, edad, titulo, ciudad, direccion, sexo FROM espia WHERE codigo = ?";
+                    sql = "SELECT nom_clau, telefon FROM espia WHERE codi = ?";
                     break;
                 default:
                     // Manejar el caso de categoría desconocida si es necesario
@@ -284,6 +285,7 @@ public class dadesGUI extends javax.swing.JFrame {
             }
 
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, LoginGUI.codigo);
 
             // Ejecutar la consulta
             resultSet = preparedStatement.executeQuery();
