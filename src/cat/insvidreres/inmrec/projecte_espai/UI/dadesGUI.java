@@ -205,7 +205,7 @@ public class dadesGUI extends javax.swing.JFrame {
         Astronauta: data primer vol, nom, edat, missions ok, sexe, missions ko, adreça i rang militar.
         Espia: nom clau i telèfon de contacte.
         */
-        if (LoginGUI.categoria.equals("Físic")) {
+        if (LoginGUI.categoria.equals("Fisic")) {
             dadesTxt1.setText("Nom: ");
             dadesTxt2.setText("Salari: ");
             dadesTxt3.setText("Edat: ");
@@ -213,7 +213,20 @@ public class dadesGUI extends javax.swing.JFrame {
             dadesTxt5.setText("Ciutat: ");
             dadesTxt6.setText("Adreça: ");
             dadesTxt7.setText("Sexe: ");
-            dadesTxt8.setText(" ");
+            dadesTxt8.setVisible(false);
+
+            jButton1.setText("Fitxar");
+            jButton1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getActionCommand().equals("Fitxar")) {
+
+                    }
+                }
+            });
+
+            jButton1.setVisible(true);
+
         } else if (LoginGUI.categoria.equals("Astronauta")){
             dadesTxt1.setText("Nom: ");
             dadesTxt2.setText("Edat: ");
@@ -269,20 +282,12 @@ public class dadesGUI extends javax.swing.JFrame {
 
             String sql = null;
             String categoria = LoginGUI.categoria;
-
-            switch (categoria) {
-                case "Fisic":
-                    sql = "SELECT nom, salari, edat, titulacio, ciutat, adreca, sexe FROM fisic WHERE codi = ?";
-                    break;
-                case "Astronauta":
-                    sql = "SELECT nom, edat, primer_vol, missions_OK, missions_KO, adreca, sexe, rang_militar FROM astronauta WHERE codi = ?";
-                    break;
-                case "Espia":
-                    sql = "SELECT nom_clau, telefon FROM espia WHERE codi = ?";
-                    break;
-                default:
-                    // Manejar el caso de categoría desconocida si es necesario
-                    break;
+            if (categoria == "Fisic") {
+                sql = "SELECT nom, salari, edat, titulacio, ciutat, adreca, sexe FROM fisic WHERE codi = ?";
+            } else if (categoria == "Astronauta") {
+                sql = "SELECT nom, edat, primer_vol, missions_OK, missions_KO, adreca, sexe, rang_militar FROM astronauta WHERE codi = ?";
+            } else if (categoria == "Espia") {
+                sql = "SELECT nom_clau, telefon FROM espia WHERE codi = ?";
             }
 
             preparedStatement = connection.prepareStatement(sql);
@@ -291,23 +296,34 @@ public class dadesGUI extends javax.swing.JFrame {
             // Ejecutar la consulta
             resultSet = preparedStatement.executeQuery();
 
-            // Verificar si se encontraron resultados
             if (resultSet.next()) {
-                // Declarar el array de JLabels aquí
-                JLabel[] mostrarDadesLabels = {
-                        mostrarDadesTxt1,
-                        mostrarDadesTxt2,
-                        mostrarDadesTxt3,
-                        mostrarDadesTxt4,
-                        mostrarDadesTxt5,
-                        mostrarDadesTxt6,
-                        mostrarDadesTxt7,
-                        mostrarDadesTxt8
-                };
-
-                // Usar un bucle para establecer los valores en los JLabels
-                for (int i = 0; i < mostrarDadesLabels.length; i++) {
-                    mostrarDadesLabels[i].setText(resultSet.getString(i + 1));
+                if (categoria == "Fisic") {
+                    mostrarDadesTxt1.setText(resultSet.getString("nom"));
+                    mostrarDadesTxt2.setText(resultSet.getString("salari"));
+                    mostrarDadesTxt3.setText(resultSet.getString("edat"));
+                    mostrarDadesTxt4.setText(resultSet.getString("titulacio"));
+                    mostrarDadesTxt5.setText(resultSet.getString("ciutat"));
+                    mostrarDadesTxt6.setText(resultSet.getString("adreca"));
+                    mostrarDadesTxt7.setText(resultSet.getString("sexe"));
+                    mostrarDadesTxt8.setVisible(false);
+                } else if (categoria == "Astronauta") {
+                    mostrarDadesTxt1.setText(resultSet.getString("nom"));
+                    mostrarDadesTxt2.setText(resultSet.getString("edat"));
+                    mostrarDadesTxt3.setText(resultSet.getString("primer_vol"));
+                    mostrarDadesTxt4.setText(resultSet.getString("missions_OK"));
+                    mostrarDadesTxt5.setText(resultSet.getString("missions_KO"));
+                    mostrarDadesTxt6.setText(resultSet.getString("adreca"));
+                    mostrarDadesTxt7.setText(resultSet.getString("sexe"));
+                    mostrarDadesTxt8.setText(resultSet.getString("rang_militar"));
+                } else if (categoria == "Espia") {
+                    mostrarDadesTxt1.setText(resultSet.getString("nom_clau"));
+                    mostrarDadesTxt2.setText(resultSet.getString("telefon"));
+                    mostrarDadesTxt3.setVisible(false);
+                    mostrarDadesTxt4.setVisible(false);
+                    mostrarDadesTxt5.setVisible(false);
+                    mostrarDadesTxt6.setVisible(false);
+                    mostrarDadesTxt7.setVisible(false);
+                    mostrarDadesTxt8.setVisible(false);
                 }
             }
 

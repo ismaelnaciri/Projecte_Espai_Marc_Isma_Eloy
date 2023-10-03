@@ -86,11 +86,10 @@ public class LoginGUI extends javax.swing.JFrame {
                         dadescrudgui.setVisible(true);
                         dispose();
                         JOptionPane.showMessageDialog(null, "Has entrat amb Mecànic (admin)");
-                    } else if ("Físic".equals(seleccion)) {
+                    } else if ("Fisic".equals(seleccion)) {
                         categoria = seleccion;
                         dadesGUI dadesgui = new dadesGUI();
                         dadesgui.setVisible(true);
-                        // System.out.println(categoria);
                         dispose();
                         JOptionPane.showMessageDialog(null, "Has entrat amb Físic");
                     } else if ("Astronauta".equals(seleccion)) {
