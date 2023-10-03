@@ -224,6 +224,7 @@ public class dadesGUI extends javax.swing.JFrame {
             dadesTxt7.setText("Sexe: ");
             dadesTxt8.setText("Rang Militar: ");
             jButton2.setText("Missatge Encriptat");
+            jButton1.setText("Enviar Coordenades");
 
             jButton2.addActionListener(new ActionListener() {
                 @Override
