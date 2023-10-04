@@ -97,6 +97,7 @@ public class Queries implements Agent {
 
     public static void crudDelete(String codi, String categoria) {
         String tableNameDEL = "";
+        System.out.println(categoria);
 
         if ("Astronauta".equalsIgnoreCase(categoria)) {
             tableNameDEL = "astronauta";
@@ -110,18 +111,11 @@ public class Queries implements Agent {
             System.out.println("Categoria no valida");
             return;
         }
-        String SQLSentence = "DELETE FROM " + tableNameDEL + " WHERE codi = ?";
+        SQLSentence = "DELETE FROM " + tableNameDEL + " WHERE codi = ?";
 
         try {
             connection = MySQLConnection.getConnection();
 
-        } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-        SQLSentence = "SELECT codigo FROM " + categoria + " WHERE (user = ?) AND (psw = ?)";
-
-        try {
             statement = connection.prepareStatement(SQLSentence);
             statement.setString(1, codi);
 
@@ -132,10 +126,12 @@ public class Queries implements Agent {
             } else {
                 System.out.println("User with codi " + codi + " not found in " + categoria);
             }
+
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
+
     }
 
 
@@ -177,7 +173,7 @@ public class Queries implements Agent {
         } else if ("Espia".equalsIgnoreCase(categoria)) {
             tableNameSELECT = "Espia";
 
-            SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
+            SQLSentence = "SELECT * FROM " + tableNameSELECT + " WHERE codi = ?";
 
             try {
                 statement = connection.prepareStatement(SQLSentence);
@@ -188,13 +184,13 @@ public class Queries implements Agent {
                 if (resultSet.next()) {
 
                     String userCode = resultSet.getString("codi");
-                    String userName = resultSet.getString("nombre");
-                    int userSalary = resultSet.getInt("salario");
+                    String userName = resultSet.getString("nom_clau");
+                    String userPhone = resultSet.getString("telefon");
 
                     System.out.println("User Details:");
-                    System.out.println("Código: " + userCode);
-                    System.out.println("Nombre: " + userName);
-                    System.out.println("Salario: " + userSalary);
+                    System.out.println("Codi: " + userCode);
+                    System.out.println("Nom Clau: " + userName);
+                    System.out.println("Salario: " + userPhone);
 
                 } else {
                     System.out.println("User with codi " + codi + " not found in " + categoria);
@@ -275,6 +271,7 @@ public class Queries implements Agent {
                 statement.setString(11, passw);
 
                 statement.executeQuery();
+                System.out.println("Mecanic insert done good :)");
 
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -370,6 +367,9 @@ public class Queries implements Agent {
                 statement.setString(3, telefon);
                 statement.setString(4, user);
                 statement.setString(5, passw);
+
+                statement.executeUpdate();
+                System.out.println("Espia insert done");
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
             }

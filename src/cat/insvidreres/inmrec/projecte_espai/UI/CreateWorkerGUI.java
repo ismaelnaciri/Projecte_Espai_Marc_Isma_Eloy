@@ -3,7 +3,11 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -14,6 +18,8 @@ public class CreateWorkerGUI extends javax.swing.JFrame {
     /**
      * Creates new form CreateWorkerGUI
      */
+
+    private String categoria;
     public CreateWorkerGUI() {
         initComponents();
     }
@@ -85,6 +91,7 @@ public class CreateWorkerGUI extends javax.swing.JFrame {
         jLabel13.setText("CREATE");
 
         refreshButton.setBackground(new java.awt.Color(153, 153, 255));
+//        refreshButton.setSize(100, 100);
         refreshButton.setText("Refresh");
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +101,12 @@ public class CreateWorkerGUI extends javax.swing.JFrame {
 
         enviarButton.setBackground(new java.awt.Color(153, 153, 255));
         enviarButton.setText("ENVIAR");
+        enviarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Queries.crudInsert(categoria);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,7 +199,7 @@ public class CreateWorkerGUI extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
-                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -246,6 +259,8 @@ public class CreateWorkerGUI extends javax.swing.JFrame {
         jTextField9.setVisible(true);
         jTextField10.setVisible(true);
         jTextField11.setVisible(true);
+        categoria = (String) categoriaComboBox.getSelectedItem();
+//        System.out.println(categoria);
         mostrarValues();
     }//GEN-LAST:event_refreshButtonActionPerformed
     public void mostrarValues() {

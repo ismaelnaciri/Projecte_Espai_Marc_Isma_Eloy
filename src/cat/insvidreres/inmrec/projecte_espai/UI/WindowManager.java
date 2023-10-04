@@ -239,7 +239,8 @@ class CrudPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("READ")) {
-
+                    ReadWorkerGUI readWorkerGUI = new ReadWorkerGUI();
+                    readWorkerGUI.setVisible(true);
                 }
             }
         });
@@ -258,7 +259,8 @@ class CrudPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("DELETE")) {
-
+                    DeleteWorkerGUI deleteWorkerGUI = new DeleteWorkerGUI();
+                    deleteWorkerGUI.setVisible(true);
                 }
             }
         });

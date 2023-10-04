@@ -3,13 +3,11 @@ package cat.insvidreres.inmrec.projecte_espai.UI;
 import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 public class DeleteWorkerGUI extends JFrame {
 
+    private String codi, taula;
 
     public DeleteWorkerGUI() {
         initComponents();
@@ -25,26 +23,25 @@ public class DeleteWorkerGUI extends JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        taulaComboBox = new javax.swing.JComboBox<>();
+        codiLabel = new javax.swing.JLabel();
         codiTextField = new javax.swing.JTextField();
+        categoryLabel = new javax.swing.JLabel();
+        categoryField = new javax.swing.JTextField();
         eliminarButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setText("DELETE");
 
-        jLabel2.setText("Codi:");
-
-        jLabel3.setText("Taula");
-
-        taulaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mecanic", "Fisic", "Astronauta", "Espia" }));
+        codiLabel.setText("Codi:");
+        categoryLabel.setText("Taula");
 
         eliminarButton.setBackground(new java.awt.Color(153, 153, 255));
         eliminarButton.setText("ELIMINAR");
         eliminarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarButtonActionPerformed(evt);
+                codi = codiTextField.getText();
+                taula = categoryField.getText();
+                Queries.crudDelete(codi, taula);
             }
         });
 
@@ -61,11 +58,11 @@ public class DeleteWorkerGUI extends JFrame {
                         .addGap(135, 135, 135)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(categoryLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(taulaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(codiLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(codiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(214, Short.MAX_VALUE))
@@ -81,12 +78,12 @@ public class DeleteWorkerGUI extends JFrame {
                 .addComponent(jLabel1)
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(codiLabel)
                     .addComponent(codiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(taulaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(categoryLabel)
+                    .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eliminarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(80, Short.MAX_VALUE))
@@ -94,10 +91,6 @@ public class DeleteWorkerGUI extends JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void eliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarButtonActionPerformed
-
-    }//GEN-LAST:event_eliminarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,8 +100,8 @@ public class DeleteWorkerGUI extends JFrame {
     private javax.swing.JTextField codiTextField;
     private javax.swing.JButton eliminarButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox<String> taulaComboBox;
+    private javax.swing.JLabel codiLabel;
+    private javax.swing.JLabel categoryLabel;
+    private javax.swing.JTextField categoryField;
     // End of variables declaration//GEN-END:variables
 }

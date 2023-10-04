@@ -71,11 +71,6 @@ public class dadesGUI extends javax.swing.JFrame implements Cientific {
 
         jButton2.setBackground(new java.awt.Color(153, 153, 255));
         jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         dadesTxt2.setText("d");
 
@@ -195,12 +190,9 @@ public class dadesGUI extends javax.swing.JFrame implements Cientific {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    //GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void dadesCategories() {
+    public void dadesCategories() {
         /*
         Mecànic: nom, salari, edat, numero del taller, adreça, anys d’experiència, ciutat on treballa i sexe.
         Físic: anys d’experiència, sexe, salari, nom, titulació acadèmica, ciutat on treballa, edat i adreça.
@@ -218,6 +210,7 @@ public class dadesGUI extends javax.swing.JFrame implements Cientific {
             dadesTxt8.setVisible(false);
 
             jButton1.setText("Fitxar Entrada");
+            jButton2.setVisible(false);
 
             jButton1.addActionListener(new ActionListener() {
                 @Override
@@ -305,6 +298,8 @@ public class dadesGUI extends javax.swing.JFrame implements Cientific {
                 sql = "SELECT nom, edat, primer_vol, missions_OK, missions_KO, adreca, sexe, rang_militar FROM astronauta WHERE codi = ?";
             } else if (categoria == "Espia") {
                 sql = "SELECT nom_clau, telefon FROM espia WHERE codi = ?";
+            } else if (categoria == "Mecanic") {
+                sql = "SELECT codi, nom, salari, edat, num_taller, adreca, anys_experiencia, ciutat, sexe FROM mecanic WHERE codi = ?";
             }
 
             preparedStatement = connection.prepareStatement(sql);

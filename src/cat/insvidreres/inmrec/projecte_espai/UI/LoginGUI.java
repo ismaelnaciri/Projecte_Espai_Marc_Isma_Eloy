@@ -75,7 +75,6 @@ public class LoginGUI extends javax.swing.JFrame {
                 String password = new String(temp);
 
                 String code = Queries.getCodigo(seleccion, user, password); //code returns null
-                System.out.println(code);
 
                 if (code != null && !code.isEmpty()) {
                     if ("Mecanic".equals(seleccion)) {
