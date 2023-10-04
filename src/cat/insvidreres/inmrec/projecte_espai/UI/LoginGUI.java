@@ -19,6 +19,10 @@ public class LoginGUI extends javax.swing.JFrame {
     public static String categoria = "";
     public static String codigo = "";
 
+    public static String usr = "";
+
+    public static String psw = "";
+
 
     /**
      * Creates new form LoginJFrame

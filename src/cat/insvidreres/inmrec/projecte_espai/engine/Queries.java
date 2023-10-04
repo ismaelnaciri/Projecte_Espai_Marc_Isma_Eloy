@@ -5,6 +5,11 @@ import cat.insvidreres.inmrec.projecte_espai.UI.LoginGUI;
 import cat.insvidreres.inmrec.projecte_espai.classes.Agent;
 import cat.insvidreres.inmrec.projecte_espai.init.Start;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.*;
 
 public class Queries implements Agent {
@@ -36,18 +41,7 @@ public class Queries implements Agent {
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
-        } finally {
-            try {
-                if (result != null) {
-                    result.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
+
         }
     }
 
@@ -106,7 +100,6 @@ public class Queries implements Agent {
             }
         }
     }
-
 
     public static void insertCoordenades(String codi_astronauta, String cordenades) throws SQLException {
 

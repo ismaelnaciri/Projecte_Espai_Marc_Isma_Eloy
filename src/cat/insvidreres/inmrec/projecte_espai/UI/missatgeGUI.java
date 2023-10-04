@@ -4,6 +4,9 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
  */
 
 import cat.insvidreres.inmrec.projecte_espai.classes.Agent;
+import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
+
+import cat.insvidreres.inmrec.projecte_espai.classes.Agent;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -48,10 +51,23 @@ public class missatgeGUI extends javax.swing.JFrame implements Agent {
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setText("Envia");
 
+        String cat = LoginGUI.categoria;
+        String codi = LoginGUI.codigo;
+        System.out.println("Test: "+codi);
+
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                enviarMissatge();
+                if (e.getActionCommand().equals("Envia") && cat.equals("Espia")){
+
+                    String missatgeEncriptat = jTextArea1.getText();
+                    enviarMissatgeEspia(codi,missatgeEncriptat);
+
+                } else if (e.getActionCommand().equals("Envia") && cat.equals("Astronauta")){
+                    String missatgeEncriptat = jTextArea1.getText();
+                    System.out.println(missatgeEncriptat);
+                    enviarMissatgeAstronauta(codi,missatgeEncriptat);
+                }
             }
         });
 
@@ -129,3 +145,4 @@ public class missatgeGUI extends javax.swing.JFrame implements Agent {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
+
