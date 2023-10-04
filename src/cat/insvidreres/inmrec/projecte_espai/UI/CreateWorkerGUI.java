@@ -32,6 +32,11 @@ public class CreateWorkerGUI extends JFrame {
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
+        setTitle("Projecte PES");
+        setResizable(false);
+        setLocationRelativeTo(null);
+
+
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -59,23 +64,10 @@ public class CreateWorkerGUI extends JFrame {
         createButton = new JButton();
         createButton.setBackground(new Color(153, 153, 255));
         createButton.setText("Crear");
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getActionCommand().equals("Crear")) {
-
-                }
-            }
-        });
 
         option = new JComboBox<>();
 
-        setTitle("Projecte PES");
-        setResizable(false);
-        setLocationRelativeTo(null);
-
         option.setModel(new DefaultComboBoxModel(new String[] { "Mecanic", "Fisic", "Astronauta", "Espia" }));
-        categoria = (String) option.getSelectedItem();
 
         label1.setFont(new Font("Segoe UI Black", 0, 18));
         label2.setFont(new Font("Segoe UI Black", 0, 18));
@@ -103,185 +95,191 @@ public class CreateWorkerGUI extends JFrame {
 
         //Place ui code here
 
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("Crear")) {
+                    if ("Mecanic".equals(categoria)) {
 
-        if ("Mecanic".equals(categoria)) {
+                        label1.setText("Codi:");
+                        label2.setText("Nom:");
+                        label3.setText("Salari:");
+                        label4.setText("Edat:");
+                        label5.setText("Numero de Taller:");
+                        label6.setText("Adreça:");
+                        label7.setText("Anys d' experiencia:");
+                        label8.setText("Ciutat:");
+                        label9.setText("Sexe:");
+                        label10.setText("User:");
+                        label11.setText("Password:");
 
-            label1.setText("Codi:");
-            label2.setText("Nom:");
-            label3.setText("Salari:");
-            label4.setText("Edat:");
-            label5.setText("Numero de Taller:");
-            label6.setText("Adreça:");
-            label7.setText("Anys d' experiencia:");
-            label8.setText("Ciutat:");
-            label9.setText("Sexe:");
-            label10.setText("User:");
-            label11.setText("Password:");
+                        label1.setVisible(true);
+                        label2.setVisible(true);
+                        label3.setVisible(true);
+                        label4.setVisible(true);
+                        label5.setVisible(true);
+                        label6.setVisible(true);
+                        label7.setVisible(true);
+                        label8.setVisible(true);
+                        label9.setVisible(true);
+                        label10.setVisible(true);
+                        label11.setVisible(true);
 
-            label1.setVisible(true);
-            label2.setVisible(true);
-            label3.setVisible(true);
-            label4.setVisible(true);
-            label5.setVisible(true);
-            label6.setVisible(true);
-            label7.setVisible(true);
-            label8.setVisible(true);
-            label9.setVisible(true);
-            label10.setVisible(true);
-            label11.setVisible(true);
+                        tfield1.setVisible(true);
+                        tfield2.setVisible(true);
+                        tfield3.setVisible(true);
+                        tfield4.setVisible(true);
+                        tfield5.setVisible(true);
+                        tfield6.setVisible(true);
+                        tfield7.setVisible(true);
+                        tfield8.setVisible(true);
+                        tfield9.setVisible(true);
+                        tfield10.setVisible(true);
+                        tfield11.setVisible(true);
 
-            tfield1.setVisible(true);
-            tfield2.setVisible(true);
-            tfield3.setVisible(true);
-            tfield4.setVisible(true);
-            tfield5.setVisible(true);
-            tfield6.setVisible(true);
-            tfield7.setVisible(true);
-            tfield8.setVisible(true);
-            tfield9.setVisible(true);
-            tfield10.setVisible(true);
-            tfield11.setVisible(true);
+                        label1Value = tfield1.getText();
+                        label2Value = tfield2.getText();
+                        label3Value = tfield3.getText();
+                        label4Value = tfield4.getText();
+                        label5Value = tfield5.getText();
+                        label6Value = tfield6.getText();
+                        label7Value = tfield7.getText();
+                        label8Value = tfield8.getText();
+                        label9Value = tfield9.getText();
+                        label10Value = tfield10.getText();
+                        label11Value = tfield11.getText();
 
-            label1Value = tfield1.getText();
-            label2Value = tfield2.getText();
-            label3Value = tfield3.getText();
-            label4Value = tfield4.getText();
-            label5Value = tfield5.getText();
-            label6Value = tfield6.getText();
-            label7Value = tfield7.getText();
-            label8Value = tfield8.getText();
-            label9Value = tfield9.getText();
-            label10Value = tfield10.getText();
-            label11Value = tfield11.getText();
+                        repaint();
+                    }
+                    else if ("Fisic".equals(categoria)) {
+                        label1.setText("Codi:");
+                        label2.setText("Nom:");
+                        label3.setText("Salari:");
+                        label4.setText("Edat:");
+                        label5.setText("Titulacio:");
+                        label6.setText("Adreça:");
+                        label7.setText("Ciutat:");
+                        label8.setText("Sexe:");
+                        label9.setText("User:");
+                        label10.setText("Password:");
 
-            repaint();
-        }
-        else if ("Fisic".equals(categoria)) {
-            label1.setText("Codi:");
-            label2.setText("Nom:");
-            label3.setText("Salari:");
-            label4.setText("Edat:");
-            label5.setText("Titulacio:");
-            label6.setText("Adreça:");
-            label7.setText("Ciutat:");
-            label8.setText("Sexe:");
-            label9.setText("User:");
-            label10.setText("Password:");
+                        label1.setVisible(true);
+                        label2.setVisible(true);
+                        label3.setVisible(true);
+                        label4.setVisible(true);
+                        label5.setVisible(true);
+                        label6.setVisible(true);
+                        label7.setVisible(true);
+                        label8.setVisible(true);
+                        label9.setVisible(true);
+                        label10.setVisible(true);
 
-            label1.setVisible(true);
-            label2.setVisible(true);
-            label3.setVisible(true);
-            label4.setVisible(true);
-            label5.setVisible(true);
-            label6.setVisible(true);
-            label7.setVisible(true);
-            label8.setVisible(true);
-            label9.setVisible(true);
-            label10.setVisible(true);
+                        tfield1.setVisible(true);
+                        tfield2.setVisible(true);
+                        tfield3.setVisible(true);
+                        tfield4.setVisible(true);
+                        tfield5.setVisible(true);
+                        tfield6.setVisible(true);
+                        tfield7.setVisible(true);
+                        tfield8.setVisible(true);
+                        tfield9.setVisible(true);
+                        tfield10.setVisible(true);
 
-            tfield1.setVisible(true);
-            tfield2.setVisible(true);
-            tfield3.setVisible(true);
-            tfield4.setVisible(true);
-            tfield5.setVisible(true);
-            tfield6.setVisible(true);
-            tfield7.setVisible(true);
-            tfield8.setVisible(true);
-            tfield9.setVisible(true);
-            tfield10.setVisible(true);
+                        label1Value = tfield1.getText();
+                        label2Value = tfield2.getText();
+                        label3Value = tfield3.getText();
+                        label4Value = tfield4.getText();
+                        label5Value = tfield5.getText();
+                        label6Value = tfield6.getText();
+                        label7Value = tfield7.getText();
+                        label8Value = tfield8.getText();
+                        label9Value = tfield9.getText();
+                        label10Value = tfield10.getText();
 
-            label1Value = tfield1.getText();
-            label2Value = tfield2.getText();
-            label3Value = tfield3.getText();
-            label4Value = tfield4.getText();
-            label5Value = tfield5.getText();
-            label6Value = tfield6.getText();
-            label7Value = tfield7.getText();
-            label8Value = tfield8.getText();
-            label9Value = tfield9.getText();
-            label10Value = tfield10.getText();
+                        repaint();
+                    }
+                    else if ("Astronauta".equals(categoria)) {
+                        label1.setText("Codi:");
+                        label2.setText("Nom:");
+                        label3.setText("Edat:");
+                        label4.setText("Primer Vol:");
+                        label5.setText("Missions OK:");
+                        label6.setText("Missions KO:");
+                        label7.setText("Adreça:");
+                        label8.setText("Sexe:");
+                        label9.setText("Rang Militar:");
+                        label10.setText("User:");
+                        label11.setText("Password:");
 
-            repaint();
-        }
-        else if ("Astronauta".equals(categoria)) {
-            label1.setText("Codi:");
-            label2.setText("Nom:");
-            label3.setText("Edat:");
-            label4.setText("Primer Vol:");
-            label5.setText("Missions OK:");
-            label6.setText("Missions KO:");
-            label7.setText("Adreça:");
-            label8.setText("Sexe:");
-            label9.setText("Rang Militar:");
-            label10.setText("User:");
-            label11.setText("Password:");
+                        label1.setVisible(true);
+                        label2.setVisible(true);
+                        label3.setVisible(true);
+                        label4.setVisible(true);
+                        label5.setVisible(true);
+                        label6.setVisible(true);
+                        label7.setVisible(true);
+                        label8.setVisible(true);
+                        label9.setVisible(true);
+                        label10.setVisible(true);
+                        label11.setVisible(true);
 
-            label1.setVisible(true);
-            label2.setVisible(true);
-            label3.setVisible(true);
-            label4.setVisible(true);
-            label5.setVisible(true);
-            label6.setVisible(true);
-            label7.setVisible(true);
-            label8.setVisible(true);
-            label9.setVisible(true);
-            label10.setVisible(true);
-            label11.setVisible(true);
+                        tfield1.setVisible(true);
+                        tfield2.setVisible(true);
+                        tfield3.setVisible(true);
+                        tfield4.setVisible(true);
+                        tfield5.setVisible(true);
+                        tfield6.setVisible(true);
+                        tfield7.setVisible(true);
+                        tfield8.setVisible(true);
+                        tfield9.setVisible(true);
+                        tfield10.setVisible(true);
+                        tfield11.setVisible(true);
 
-            tfield1.setVisible(true);
-            tfield2.setVisible(true);
-            tfield3.setVisible(true);
-            tfield4.setVisible(true);
-            tfield5.setVisible(true);
-            tfield6.setVisible(true);
-            tfield7.setVisible(true);
-            tfield8.setVisible(true);
-            tfield9.setVisible(true);
-            tfield10.setVisible(true);
-            tfield11.setVisible(true);
+                        label1Value = tfield1.getText();
+                        label2Value = tfield2.getText();
+                        label3Value = tfield3.getText();
+                        label4Value = tfield4.getText();
+                        label5Value = tfield5.getText();
+                        label6Value = tfield6.getText();
+                        label7Value = tfield7.getText();
+                        label8Value = tfield8.getText();
+                        label9Value = tfield9.getText();
+                        label10Value = tfield10.getText();
+                        label11Value = tfield11.getText();
 
-            label1Value = tfield1.getText();
-            label2Value = tfield2.getText();
-            label3Value = tfield3.getText();
-            label4Value = tfield4.getText();
-            label5Value = tfield5.getText();
-            label6Value = tfield6.getText();
-            label7Value = tfield7.getText();
-            label8Value = tfield8.getText();
-            label9Value = tfield9.getText();
-            label10Value = tfield10.getText();
-            label11Value = tfield11.getText();
+                        repaint();
+                    }
+                    else if ("Espia".equals(categoria)) {
+                        label1.setText("Codi:");
+                        label2.setText("Nom Clau:");
+                        label3.setText("Telefon:");
+                        label4.setText("User:");
+                        label5.setText("Password:");
 
-            repaint();
-        }
-        else if ("Espia".equals(categoria)) {
-            label1.setText("Codi:");
-            label2.setText("Nom Clau:");
-            label3.setText("Telefon:");
-            label4.setText("User:");
-            label5.setText("Password:");
+                        label1.setVisible(true);
+                        label2.setVisible(true);
+                        label3.setVisible(true);
+                        label4.setVisible(true);
+                        label5.setVisible(true);
 
-            label1.setVisible(true);
-            label2.setVisible(true);
-            label3.setVisible(true);
-            label4.setVisible(true);
-            label5.setVisible(true);
+                        tfield1.setVisible(true);
+                        tfield2.setVisible(true);
+                        tfield3.setVisible(true);
+                        tfield4.setVisible(true);
+                        tfield5.setVisible(true);
 
-            tfield1.setVisible(true);
-            tfield2.setVisible(true);
-            tfield3.setVisible(true);
-            tfield4.setVisible(true);
-            tfield5.setVisible(true);
-
-            label1Value = tfield1.getText();
-            label2Value = tfield2.getText();
-            label3Value = tfield3.getText();
-            label4Value = tfield4.getText();
-            label5Value = tfield5.getText();
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Error al conseguir la categoria", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+                        label1Value = tfield1.getText();
+                        label2Value = tfield2.getText();
+                        label3Value = tfield3.getText();
+                        label4Value = tfield4.getText();
+                        label5Value = tfield5.getText();
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Error al conseguir la categoria", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
     }
 
     public static String getLabel1Value() {

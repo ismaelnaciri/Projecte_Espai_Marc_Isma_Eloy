@@ -1,7 +1,6 @@
 package cat.insvidreres.inmrec.projecte_espai.UI;
 
 import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
-import javafx.scene.control.ComboBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class deleteWorkerGUI extends JFrame {
+public class DeleteWorkerGUI extends JFrame {
 
     public String categoria, codi;
 
@@ -18,7 +17,7 @@ public class deleteWorkerGUI extends JFrame {
     private JTextField codeField;
     private JButton deleteButton;
 
-    public deleteWorkerGUI() {
+    public DeleteWorkerGUI() {
         initComponents();
     }
 
