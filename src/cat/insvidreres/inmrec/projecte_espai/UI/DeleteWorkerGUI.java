@@ -11,10 +11,8 @@ import java.awt.event.ActionListener;
 public class DeleteWorkerGUI extends JFrame {
 
     public String categoria, codi;
-
-    private JComboBox option;
-    private JLabel codeLabel;
-    private JTextField codeField;
+    private JLabel codeLabel, categoryLabel;
+    private JTextField codeField, categoryField;
     private JButton deleteButton;
 
     public DeleteWorkerGUI() {
@@ -26,13 +24,10 @@ public class DeleteWorkerGUI extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
 
-        codeLabel = new JLabel();
+        codeLabel = new JLabel("Codi: ");
+        categoryLabel = new JLabel("Categoria: ");
         codeField = new JTextField();
         deleteButton = new JButton();
-
-        option = new JComboBox<>();
-        option.setModel(new DefaultComboBoxModel(new String[] { "Mecanic", "Fisic", "Astronauta", "Espia" }));
-        categoria = (String) option.getSelectedItem();
 
         codeLabel.setFont(new Font("Segoe UI Black", 0, 18));
         codeField.setFont(new Font("Segoe UI Black", 0, 18));
@@ -41,13 +36,14 @@ public class DeleteWorkerGUI extends JFrame {
         deleteButton.setText("Eliminar");
 
         codi = codeField.getText();
+        categoria = categoryField.getText();
 
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("Eliminar")) {
                     Queries.crudDelete(codi, categoria);
-                    System.out.println("Test");
+                    System.out.println("Delete successful");
                 }
             }
         });

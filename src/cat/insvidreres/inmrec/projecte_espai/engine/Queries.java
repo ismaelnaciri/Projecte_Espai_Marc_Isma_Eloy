@@ -45,62 +45,6 @@ public class Queries implements Agent {
         }
     }
 
-    public static void getVehiclesCodiOfMechanic(String codi_mecanic) throws SQLException {
-
-        connection = MySQLConnection.getConnection();
-        SQLSentence = "SELECT codi_vin FROM vehicle_mecanic WHERE codi_mecanic = ?";
-
-        try {
-            statement = connection.prepareStatement(SQLSentence);
-            statement.setString(1, codi_mecanic);
-
-            result = statement.executeQuery();
-
-        } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            try {
-                if (result != null)
-                    result.close();
-                if (statement != null)
-                    statement.close();
-
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void getVehicles(int codi_vin) throws SQLException {
-
-        connection = MySQLConnection.getConnection();
-        SQLSentence = "SELECT * FROM vehicle WHERE codi_vin = ?";
-
-        try {
-            statement = connection.prepareStatement(SQLSentence);
-            statement.setInt(1, codi_vin);
-
-            result = statement.executeQuery();
-
-        } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            try {
-                if (result != null)
-                    result.close();
-                if (statement != null)
-                    statement.close();
-
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-    }
-
     public static void insertCoordenades(String codi_astronauta, String cordenades) throws SQLException {
 
         connection = MySQLConnection.getConnection();
