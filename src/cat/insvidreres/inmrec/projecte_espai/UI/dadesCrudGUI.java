@@ -5,8 +5,13 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
 import cat.insvidreres.inmrec.projecte_espai.UI.WindowManager;
 import cat.insvidreres.inmrec.projecte_espai.UI.DadesPanel;
 import cat.insvidreres.inmrec.projecte_espai.UI.CrudPanel;
+import cat.insvidreres.inmrec.projecte_espai.engine.MySQLConnection;
 
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *

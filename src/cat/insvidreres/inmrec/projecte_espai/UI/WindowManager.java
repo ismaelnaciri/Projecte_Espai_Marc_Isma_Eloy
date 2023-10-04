@@ -1,12 +1,19 @@
 package cat.insvidreres.inmrec.projecte_espai.UI;
 
+import cat.insvidreres.inmrec.projecte_espai.classes.Cientific;
+import cat.insvidreres.inmrec.projecte_espai.engine.MySQLConnection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class WindowManager extends JPanel {
-    
+
     public WindowManager() {
         initComponents();
     }
@@ -31,8 +38,11 @@ public class WindowManager extends JPanel {
         });
     }
 }
-class DadesPanel extends JPanel {
+class DadesPanel extends JPanel implements Cientific {
 
+    public boolean esEntrada = true;
+    JLabel value1, value2, value3, value4,
+            value5, value6, value7, value8, value0;
 
     public DadesPanel() {
         setLayout(new BorderLayout());
@@ -44,16 +54,27 @@ class DadesPanel extends JPanel {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
 
-        JButton b1 = new JButton("PROVA1");
-        JButton b2 = new JButton("PROVA2");
+        JButton b1 = new JButton("Fitxar");
+        JButton b2 = new JButton("Llistar Vehicles");
         Dimension buttonSize = new Dimension(100, 40);
         b1.setPreferredSize(buttonSize);
         b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getActionCommand().equals("PROVA1")) {
-                    llistaVehiclesGUI test = new llistaVehiclesGUI();
-                    test.setVisible(true);
+                String cat = LoginGUI.categoria;
+                String codi = LoginGUI.codigo;
+
+                if (esEntrada==true) {
+                    // Si es entrada, realiza acciones de entrada
+                    String horaEntrada = obtenerHoraYDiaActual();
+                    insertarFechaEntrada(codi, horaEntrada, cat);
+                    b1.setText("Fitxar Sortida");
+                    esEntrada= false;
+                } else {
+                    // Si es salida, realiza acciones de salida
+                    String horaSortida = obtenerHoraYDiaActual();
+                    actualizarFechaSalida(codi, horaSortida, cat);
+                    b1.setVisible(false);
                 }
             }
         });
@@ -63,42 +84,62 @@ class DadesPanel extends JPanel {
         b2.setBackground(buttonColor);
         b1.setForeground(Color.WHITE);
         b2.setForeground(Color.WHITE);
-        Font buttonFont = new java.awt.Font("Segoe UI Black", Font.PLAIN, 16);
+        Font buttonFont = new java.awt.Font("Segoe UI Black", Font.PLAIN, 14);
         b1.setFont(buttonFont);
         b2.setFont(buttonFont);
 
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("Llistar Vehicles")) {
+                    llistaVehiclesGUI llistaVehiclesGUI = new llistaVehiclesGUI();
+                    llistaVehiclesGUI.setVisible(true);
+                }
+            }
+        });
+
         JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(7, 2, 10, 10)); // Establece un diseño de cuadrícula para el formulario
+        formPanel.setLayout(new GridLayout(9, 2, 5, 5)); // Establece un diseño de cuadrícula para el formulario
 
+        JLabel label0 = new JLabel("Codi: ");
+        value0 = new JLabel();
         JLabel label1 = new JLabel("Nom: ");
-        JTextField textField1 = new JTextField();
+        value1 = new JLabel();
         JLabel label2 = new JLabel("Salari: ");
-        JTextField textField2 = new JTextField();
+        value2 = new JLabel();
         JLabel label3 = new JLabel("Edat: ");
-        JTextField textField3 = new JTextField();
-        JLabel label4 = new JLabel("Titulació: ");
-        JTextField textField4 = new JTextField();
-        JLabel label5 = new JLabel("Ciutat: ");
-        JTextField textField5 = new JTextField();
-        JLabel label6 = new JLabel("Adreça: ");
-        JTextField textField6 = new JTextField();
-        JLabel label7 = new JLabel("Sexe: ");
-        JTextField textField7 = new JTextField();
+        value3 = new JLabel();
+        JLabel label4 = new JLabel("Numero Taller: ");
+        value4 = new JLabel();
+        JLabel label5 = new JLabel("Adreça: ");
+        value5 = new JLabel();
+        JLabel label6 = new JLabel("Anys Experiencia: ");
+        value6 = new JLabel();
+        JLabel label7 = new JLabel("Ciutat: ");
+        value7 = new JLabel();
+        JLabel label8 = new JLabel("Sexe: ");
+        value8 = new JLabel();
 
+        formPanel.add(label0);
+        formPanel.add(value0);
         formPanel.add(label1);
-        formPanel.add(textField1);
+        formPanel.add(value1);
         formPanel.add(label2);
-        formPanel.add(textField2);
+        formPanel.add(value2);
         formPanel.add(label3);
-        formPanel.add(textField3);
+        formPanel.add(value3);
         formPanel.add(label4);
-        formPanel.add(textField4);
+        formPanel.add(value4);
         formPanel.add(label5);
-        formPanel.add(textField5);
+        formPanel.add(value5);
         formPanel.add(label6);
-        formPanel.add(textField6);
+        formPanel.add(value6);
         formPanel.add(label7);
-        formPanel.add(textField7);
+        formPanel.add(value7);
+        formPanel.add(label8);
+        formPanel.add(value8);
+
+        mostrarDadesMecanicCrud();
 
         buttonPanel.add(b1);
         buttonPanel.add(b2);
@@ -106,6 +147,49 @@ class DadesPanel extends JPanel {
         add(jLabel1, BorderLayout.NORTH);
         add(formPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    public void mostrarDadesMecanicCrud() {
+        Connection connection = null;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        String SQLSentence = "SELECT codi, nom, salari, edat, num_taller, adreca, anys_experiencia, ciutat, sexe "
+                            + "FROM mecanic WHERE codi = ?";
+        String codi = LoginGUI.codigo;
+
+        try {
+            connection = MySQLConnection.getConnection();
+
+            preparedStatement = connection.prepareStatement(SQLSentence);
+            preparedStatement.setString(1, codi);
+
+            resultSet = preparedStatement.executeQuery();
+
+
+            if (resultSet.next()) {
+                value0.setText(resultSet.getString("codi"));
+                value0.setVisible(true);
+                value1.setText(resultSet.getString("nom"));
+                value1.setVisible(true);
+                value2.setText(resultSet.getString("salari"));
+                value2.setVisible(true);
+                value3.setText(resultSet.getString("edat"));
+                value3.setVisible(true);
+                value4.setText(resultSet.getString("num_taller"));
+                value4.setVisible(true);
+                value5.setText(resultSet.getString("adreca"));
+                value5.setVisible(true);
+                value6.setText(resultSet.getString("anys_experiencia"));
+                value6.setVisible(true);
+                value7.setText(resultSet.getString("ciutat"));
+                value7.setVisible(true);
+                value8.setText(resultSet.getString("sexe"));
+                value8.setVisible(true);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
 
