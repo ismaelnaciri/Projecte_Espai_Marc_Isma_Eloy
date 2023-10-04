@@ -3,6 +3,7 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import cat.insvidreres.inmrec.projecte_espai.classes.Cientific;
 import cat.insvidreres.inmrec.projecte_espai.engine.MySQLConnection;
 import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
 
