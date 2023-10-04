@@ -4,6 +4,20 @@ package cat.insvidreres.inmrec.projecte_espai.UI;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
+import cat.insvidreres.inmrec.projecte_espai.init.Start;
+
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author ELOWIS
@@ -13,9 +27,7 @@ public class llistaVehiclesGUI extends javax.swing.JFrame {
     /**
      * Creates new form llistaVehiclesGUI
      */
-    public llistaVehiclesGUI() {
-        initComponents();
-    }
+    public llistaVehiclesGUI() {initComponents();}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,15 +53,26 @@ public class llistaVehiclesGUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codi Vin", "Matricula", "Marca", "Model"
             }
         ));
+
+
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setText("VEHICLES MECÀNIC");
 
         jButton1.setText("Refresh");
+
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refreshTable();
+            }
+        });
+
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,7 +102,54 @@ public class llistaVehiclesGUI extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
+    private void refreshTable(){
+        String codi= LoginGUI.codigo;
+        try (Connection connection = Start.getConnection()) {
+
+            String sqlConsulta = "SELECT vehicle.codi_vin, matricula, marca, modelo  " +
+                    "FROM vehicle, mecanic, vehicle_mecanic  " +
+                    "WHERE mecanic.codi = vehicle_mecanic.codi_mecanic  " +
+                    "AND vehicle_mecanic.codi_vin = vehicle.codi_vin  " +
+                    "AND mecanic.codi = ?";
+
+            PreparedStatement statementConsulta = connection.prepareStatement(sqlConsulta);
+            statementConsulta.setString(1, codi);
+            ResultSet resultSet = statementConsulta.executeQuery();
+
+
+            //Escriptura en fitxer
+            FileWriter fileWriter = new FileWriter("src/cat/insvidreres/inmrec/projecte_espai/utils/magatzem_vehicles.txt");
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.println("Codi Vin\tMatricula\tMarca\tModel");
+
+
+            DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+            tableModel.setRowCount(0);
+
+            while (resultSet.next()) {
+                int codi_vin = resultSet.getInt("codi_vin");
+                String matricula = resultSet.getString("matricula");
+                String marca = resultSet.getString("marca");
+                String model = resultSet.getString("modelo");
+
+                Object[] row = {codi_vin, matricula, marca, model};
+                tableModel.addRow(row);
+                printWriter.println(codi_vin + "\t" + matricula + "\t" + marca + "\t" + model);
+
+            }
+            printWriter.close();
+            fileWriter.close();
+
+
+        } catch (SQLException i) {
+            i.printStackTrace();
+            System.out.println("Error: " + i.getMessage());
+        } catch (IOException i) {
+            throw new RuntimeException(i);
+        }
+    }
+    // </editor-fold>//GEN-END:initComponents
 
     /**
      * @param args the command line arguments
@@ -90,5 +160,7 @@ public class llistaVehiclesGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+
+
     // End of variables declaration//GEN-END:variables
 }

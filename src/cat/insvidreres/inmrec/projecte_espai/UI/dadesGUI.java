@@ -3,6 +3,7 @@ package cat.insvidreres.inmrec.projecte_espai.UI;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import cat.insvidreres.inmrec.projecte_espai.classes.Cientific;
 import cat.insvidreres.inmrec.projecte_espai.engine.MySQLConnection;
 import cat.insvidreres.inmrec.projecte_espai.engine.Queries;
 
@@ -18,7 +19,8 @@ import java.sql.SQLException;
  *
  * @author ELOWIS
  */
-public class dadesGUI extends javax.swing.JFrame {
+public class dadesGUI extends javax.swing.JFrame implements Cientific {
+    public boolean esEntrada = true;
 
     /**
      * Creates new form dadesGUI
@@ -215,15 +217,29 @@ public class dadesGUI extends javax.swing.JFrame {
             dadesTxt7.setText("Sexe: ");
             dadesTxt8.setVisible(false);
 
-            jButton1.setText("Fitxar");
+            jButton1.setText("Fitxar Entrada");
+
             jButton1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (e.getActionCommand().equals("Fitxar")) {
+                    String cat = LoginGUI.categoria;
+                    String codi = LoginGUI.codigo;
 
+                    if (esEntrada==true) {
+                        // Si es entrada, realiza acciones de entrada
+                        String horaEntrada = obtenerHoraYDiaActual();
+                        insertarFechaEntrada(codi, horaEntrada, cat);
+                        jButton1.setText("Fitxar Sortida");
+                        esEntrada= false;
+                    } else {
+                        // Si es salida, realiza acciones de salida
+                        String horaSortida = obtenerHoraYDiaActual();
+                        actualizarFechaSalida(codi, horaSortida, cat);
+                        jButton1.setVisible(false);
                     }
                 }
             });
+
 
             jButton1.setVisible(true);
 
@@ -257,6 +273,7 @@ public class dadesGUI extends javax.swing.JFrame {
             dadesTxt6.setText(" ");
             dadesTxt7.setText(" ");
             dadesTxt8.setText(" ");
+            jButton1.setText("Fitxar");
             jButton2.setText("Missatge Encriptat");
 
             jButton2.addActionListener(new ActionListener() {
