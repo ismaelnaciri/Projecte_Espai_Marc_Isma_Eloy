@@ -21,10 +21,11 @@ public interface Cientific {
 
         return fechaYHoraFormateada;
     }
+
     default void insertarFechaEntrada(String codi_professional, String fecha_entrada, String categoria) {
         try (Connection connection = MySQLConnection.getConnection()) {
             String cat = categoria;
-            System.out.println("Prova");
+            System.out.println(cat);
 
             if (cat.equals("Mecanic")){
                 String sql = "INSERT INTO assistencia_mecanic (data_entrada, codi_prof_mecanic) VALUES (?, ?)";

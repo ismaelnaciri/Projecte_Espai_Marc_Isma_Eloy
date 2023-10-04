@@ -43,7 +43,6 @@ public class llistaVehiclesGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,6 +68,7 @@ public class llistaVehiclesGUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 refreshTable();
+                jButton1.setVisible(false);
             }
         });
 

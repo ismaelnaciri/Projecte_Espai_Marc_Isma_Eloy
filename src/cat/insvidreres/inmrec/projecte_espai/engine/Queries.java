@@ -202,7 +202,7 @@ public class Queries implements Agent {
         if ("Astronauta".equalsIgnoreCase(categoria)) {
             tableNameSELECT = "Astronauta";
 
-            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
+            SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
 
             try {
                 statement = connection.prepareStatement(SQLSentence);
@@ -233,7 +233,7 @@ public class Queries implements Agent {
         } else if ("Espia".equalsIgnoreCase(categoria)) {
             tableNameSELECT = "Espia";
 
-            String SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
+            SQLSentence = "SELECT * FROM  + tableNameSELECT +  WHERE codi = ?";
 
             try {
                 statement = connection.prepareStatement(SQLSentence);

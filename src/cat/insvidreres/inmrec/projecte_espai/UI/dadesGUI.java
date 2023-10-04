@@ -267,7 +267,7 @@ public class dadesGUI extends javax.swing.JFrame implements Cientific {
         } else if (LoginGUI.categoria.equals("Espia")){
             dadesTxt1.setText("Nom: ");
             dadesTxt2.setText("Telèfon: ");
-            jButton1.setText("Fitxar");
+            jButton1.setVisible(false);
             dadesTxt3.setVisible(false);
             dadesTxt4.setVisible(false);
             dadesTxt5.setVisible(false);

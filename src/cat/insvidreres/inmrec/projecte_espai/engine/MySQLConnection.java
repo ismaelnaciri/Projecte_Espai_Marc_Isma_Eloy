@@ -19,7 +19,6 @@ public class MySQLConnection {
         Connection connection = null;
 
         try (FileInputStream fis = new FileInputStream(connectionPropertiesPath)) {
-            //TODO
             Properties pros = new Properties();
             pros.load(fis);
 
