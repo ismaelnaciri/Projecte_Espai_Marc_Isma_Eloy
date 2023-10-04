@@ -1,3 +1,2 @@
 Codi Vin	Matricula	Marca	Model
-1000543210	YZA1234	Nissan	Sentra
-1222567890	XYZ5678	Honda	Civic
+1234567890	ABC1234	Toyota	Corolla

@@ -301,17 +301,17 @@ public class Queries implements Agent {
                 rang_militar,sexe, user, passw;
 
         if (categoria.equals("Mecanic")) {
-            codi = CreateWorkerGUI.getLabel1Value();
-            nom = CreateWorkerGUI.getLabel2Value();
-            salari = CreateWorkerGUI.getLabel3Value();
-            edat = CreateWorkerGUI.getLabel4Value();
-            num_taller = CreateWorkerGUI.getLabel5Value();
-            adreca = CreateWorkerGUI.getLabel6Value();
-            anys_exp = CreateWorkerGUI.getLabel7Value();
-            ciutat = CreateWorkerGUI.getLabel8Value();
-            sexe = CreateWorkerGUI.getLabel9Value();
-            user = CreateWorkerGUI.getLabel10Value();
-            passw = CreateWorkerGUI.getLabel11Value();
+            codi = CreateWorkerGUI.getjTextField1().getText();
+            nom = CreateWorkerGUI.getjTextField2().getText();
+            salari = CreateWorkerGUI.getjTextField3().getText();
+            edat = CreateWorkerGUI.getjTextField4().getText();
+            num_taller = CreateWorkerGUI.getjTextField5().getText();
+            adreca = CreateWorkerGUI.getjTextField6().getText();
+            anys_exp = CreateWorkerGUI.getjTextField7().getText();
+            ciutat = CreateWorkerGUI.getjTextField8().getText();
+            sexe = CreateWorkerGUI.getjTextField9().getText();
+            user = CreateWorkerGUI.getjTextField10().getText();
+            passw = CreateWorkerGUI.getjTextField11().getText();
 
             SQLSentence = "INSERT INTO " + categoria + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -340,16 +340,16 @@ public class Queries implements Agent {
 
         }
         else if (categoria.equals("Fisic")) {
-            codi = CreateWorkerGUI.getLabel1Value();
-            nom = CreateWorkerGUI.getLabel2Value();
-            salari = CreateWorkerGUI.getLabel3Value();
-            edat = CreateWorkerGUI.getLabel4Value();
-            titulacio = CreateWorkerGUI.getLabel5Value();
-            adreca = CreateWorkerGUI.getLabel6Value();
-            ciutat = CreateWorkerGUI.getLabel7Value();
-            sexe = CreateWorkerGUI.getLabel8Value();
-            user = CreateWorkerGUI.getLabel9Value();
-            passw = CreateWorkerGUI.getLabel10Value();
+            codi = CreateWorkerGUI.getjTextField1().getText();
+            nom = CreateWorkerGUI.getjTextField2().getText();
+            salari = CreateWorkerGUI.getjTextField3().getText();
+            edat = CreateWorkerGUI.getjTextField4().getText();
+            titulacio = CreateWorkerGUI.getjTextField5().getText();
+            adreca = CreateWorkerGUI.getjTextField6().getText();
+            ciutat = CreateWorkerGUI.getjTextField7().getText();
+            sexe = CreateWorkerGUI.getjTextField8().getText();
+            user = CreateWorkerGUI.getjTextField9().getText();
+            passw = CreateWorkerGUI.getjTextField10().getText();
 
             SQLSentence = "INSERT INTO " + categoria + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -374,17 +374,17 @@ public class Queries implements Agent {
         }
 
         else if (categoria.equals("Astronauta")) {
-            codi = CreateWorkerGUI.getLabel1Value();
-            nom = CreateWorkerGUI.getLabel2Value();
-            edat = CreateWorkerGUI.getLabel3Value();
-            primer_vol = CreateWorkerGUI.getLabel4Value();
-            missions_ok = CreateWorkerGUI.getLabel5Value();
-            missions_ko = CreateWorkerGUI.getLabel6Value();
-            adreca = CreateWorkerGUI.getLabel7Value();
-            sexe = CreateWorkerGUI.getLabel8Value();
-            rang_militar = CreateWorkerGUI.getLabel9Value();
-            user = CreateWorkerGUI.getLabel10Value();
-            passw = CreateWorkerGUI.getLabel11Value();
+            codi = CreateWorkerGUI.getjTextField1().getText();
+            nom = CreateWorkerGUI.getjTextField2().getText();
+            edat = CreateWorkerGUI.getjTextField3().getText();
+            primer_vol = CreateWorkerGUI.getjTextField4().getText();
+            missions_ok = CreateWorkerGUI.getjTextField5().getText();
+            missions_ko = CreateWorkerGUI.getjTextField6().getText();
+            adreca = CreateWorkerGUI.getjTextField7().getText();
+            sexe = CreateWorkerGUI.getjTextField8().getText();
+            rang_militar = CreateWorkerGUI.getjTextField9().getText();
+            user = CreateWorkerGUI.getjTextField10().getText();
+            passw = CreateWorkerGUI.getjTextField11().getText();
 
             SQLSentence = "INSERT INTO " + categoria + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -410,11 +410,11 @@ public class Queries implements Agent {
         }
 
         else if (categoria.equals("Espia")) {
-            codi = CreateWorkerGUI.getLabel1Value();
-            nom = CreateWorkerGUI.getLabel2Value();
-            telefon = CreateWorkerGUI.getLabel3Value();
-            user = CreateWorkerGUI.getLabel4Value();
-            passw = CreateWorkerGUI.getLabel5Value();
+            codi = CreateWorkerGUI.getjTextField1().getText();
+            nom = CreateWorkerGUI.getjTextField2().getText();
+            telefon = CreateWorkerGUI.getjTextField3().getText();
+            user = CreateWorkerGUI.getjTextField4().getText();
+            passw = CreateWorkerGUI.getjTextField5().getText();
 
             SQLSentence = "INSERT INTO " + categoria + " VALUES(?, ?, ?, ?, ?)";
 
